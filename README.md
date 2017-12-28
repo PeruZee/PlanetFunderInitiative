@@ -5,4 +5,4 @@
 #Declare standings... 1st position, 2nd position etc.
 
 Java project file: TXIDForEach.java
-TXIDList.txt @ ./src/TXIDList.tct
+TXIDList.txt @ ./src/TXIDList.txt
