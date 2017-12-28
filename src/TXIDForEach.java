@@ -1,3 +1,8 @@
+/*Initiator: Pruz 12/2017
+ *
+ *
+ */
+
 import java.util.Random;
 import java.util.HashMap;
 import java.io.BufferedReader;
