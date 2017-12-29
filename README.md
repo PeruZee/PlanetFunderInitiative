@@ -1,4 +1,4 @@
-Step by Step, even The Mount Everest is climbable. We will donate 5% of every lottery to The Ocean Cleanup project
+Step by Step, even The Mount Everest is climbable. We will donate 5% of every lottery to The Ocean Cleanup project.
 
 Contributors welcome.
 
