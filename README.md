@@ -16,7 +16,7 @@ Contributors welcome.
 [Example 2:] If there are 100 participants, the die will have 100 sides with numbers ranging from 1-100 and each of the participants will also roll the die 100 times individually. Their 100 rolls are totalled and compared against other participant total roll value to give them a standing. There can be ties.
 
 
-# TODO
+# TO DO
 
 1. Declare participant TXIDs: 1st position, 2nd position etc. (Blueprint done: Shows ID, will also show actual TXID in string value)
 2. The cut off method between Winners and Losers [(p = Maximum Roll Total - Minimum Roll Total/2)] where [p] represents arbitrary percentage of losers per lottery period (rounded to Integer where that number is a Double).
