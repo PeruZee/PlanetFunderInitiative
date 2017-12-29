@@ -1,22 +1,22 @@
 #TODO
 
-#Store roll values per participant in an array or map. (done)
+1. Declare standings: 1st position, 2nd position etc. (Blueprint done: Shows ID, will also show actual TXID in string value)
+2. The cut off method between Winners and Losers [(p = Maximum Roll Total - Minimum Roll Total/2)] where [p] represents arbitrary percentage of losers per lottery period (rounded to Integer where that number is a Double).
 
-#Compare totals versus totals. (done)
-
-#Declare standings... 1st position, 2nd position etc. (shows ID, needs to also show actual TXID in string value)
-
-#The cut off method between Winners and Losers [(p = Maximum Roll Total - Minimum Roll Total/2)] where [p] represents arbitrary percentage of losers per lottery period (rounded to Integer where that number is a Double).
+#DONE
+1. Create nSided Rollbased Dice
+2. Create 50/50 Lotto Architecture
+3. Optimize initial Code
+4. Store roll values per participant in an array, compare totals versus totals and display standings.
 
 #...
 
-#
+#Java project files @ ./src/*
+1. TXIDForEach.java
+2. TXIDList.txt
+3. TXIDListZero.txt
+4. TXIDListOne.txt
 
-#Java project file: TXIDForEach.java
-#TXIDList.txt @ ./src/TXIDList.txt
-#TXIDListZero.txt
-#TXIDListOne.txt
-#...
 
 #Project Homepage: https://peruzee.github.io/PlanetFunderDiceLotto/
 
