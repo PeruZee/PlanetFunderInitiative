@@ -16,13 +16,14 @@ Contributors welcome.
 [Example 2:] If there are 100 participants, the die will have 100 sides with numbers ranging from 1-100 and each of the participants will also roll the die 100 times individually. Their 100 rolls are totalled and compared against other participant total roll value to give them a standing. There can be ties.
 
 
-#TODO
+# TODO
 
 1. Declare participant TXIDs: 1st position, 2nd position etc. (Blueprint done: Shows ID, will also show actual TXID in string value)
 2. The cut off method between Winners and Losers [(p = Maximum Roll Total - Minimum Roll Total/2)] where [p] represents arbitrary percentage of losers per lottery period (rounded to Integer where that number is a Double).
 3. Integrate with Stellar Platform.
 
-#DONE
+# DONE
+
 1. Create nSided Rollbased Dice
 2. Create 50/50 Lotto Architecture
 3. Optimize initial Code
@@ -30,21 +31,20 @@ Contributors welcome.
 
 
 
+# Java project files @ ./src/*
 
-
-#Java project files @ ./src/*
 1. TXIDForEach.java
 2. TXIDList.txt
 3. TXIDListZero.txt
 4. TXIDListOne.txt
 
 
-#Project Homepage: https://peruzee.github.io/PlanetFunderDiceLotto/
+# Project Homepage: https://peruzee.github.io/PlanetFunderDiceLotto/
 
-#Wiki Home: https://github.com/PeruZee/PlanetFunderDiceLotto/wiki
+# Wiki Home: https://github.com/PeruZee/PlanetFunderDiceLotto/wiki
 
-#Facebook: https://www.facebook.com/PlanetFunderInitiative/
+# Facebook: https://www.facebook.com/PlanetFunderInitiative/
 
-#Output Image (28/12/2017): https://github.com/PeruZee/PlanetFunderDiceLotto/raw/master/PlanetFunderOP.png
+# Output Image (28/12/2017): https://github.com/PeruZee/PlanetFunderDiceLotto/raw/master/PlanetFunderOP.png
 
 (Licensed under the Eclipse Public License 1.0)
