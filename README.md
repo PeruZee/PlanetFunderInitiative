@@ -11,9 +11,17 @@ Contributors welcome.
 3. The lottery is held every 12 hours (720 minutes).
 
 
-[Example 1:] If there are 10 participants, the die will have 10 sides with numbers ranging from 1-10 and each of the participants will also roll the die 10 times individually. Their 10 rolls are totalled and compared against other participants total roll value to give them a standing. There can be ties.
+**[Example 1:]** 
 
-[Example 2:] If there are 100 participants, the die will have 100 sides with numbers ranging from 1-100 and each of the participants will also roll the die 100 times individually. Their 100 rolls are totalled and compared against other participant total roll value to give them a standing. There can be ties.
+If there are 10 participants, the die will have 10 sides with numbers ranging from 1-10 and each of the participants will also roll the die 10 times individually. Their 10 rolls are totalled and compared against other participants total roll value to give them a standing. There can be ties.
+
+**[Example 2:]** 
+
+If there are 100 participants, the die will have 100 sides with numbers ranging from 1-100 and each of the participants will also roll the die 100 times individually. Their 100 rolls are totalled and compared against other participant total roll value to give them a standing. There can be ties.
+
+**A 6-Sided Die:**
+
+![6-Sided Die](https://github.com/PeruZee/PlanetFunderDiceLotto/blob/master/a%20die.jfif)
 
 
 # TO DO
@@ -39,12 +47,12 @@ Contributors welcome.
 4. TXIDListOne.txt
 
 
-# Project Homepage: https://peruzee.github.io/PlanetFunderDiceLotto/
+#**Project Homepage:** (https://peruzee.github.io/PlanetFunderDiceLotto/)
 
-# Wiki Home: https://github.com/PeruZee/PlanetFunderDiceLotto/wiki
+#**Wiki Home:** (https://github.com/PeruZee/PlanetFunderDiceLotto/wiki)
 
-# Facebook: https://www.facebook.com/PlanetFunderInitiative/
+#**Facebook:** (https://www.facebook.com/PlanetFunderInitiative/)
 
-# Output Image (28/12/2017): https://github.com/PeruZee/PlanetFunderDiceLotto/raw/master/PlanetFunderOP.png
+#**Output Image (28/12/2017):** (https://github.com/PeruZee/PlanetFunderDiceLotto/raw/master/PlanetFunderOP.png)
 
-(Licensed under the Eclipse Public License 1.0)
+**Licensed under the Eclipse Public License 1.0**
