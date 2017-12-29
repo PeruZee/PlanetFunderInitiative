@@ -6,7 +6,7 @@
 
 #Declare standings... 1st position, 2nd position etc. (shows ID, needs to also show actual TXID in string value)
 
-#The cut off method between Winners and Losers [(p = Max Total Range - Minimum Total Range/2)] where p represents arbitrary percentage of losers per lottery period (rounded to Integer where that number is a Double).
+#The cut off method between Winners and Losers [(p = Maximum Roll Total - Minimum Roll Total/2)] where p represents arbitrary percentage of losers per lottery period (rounded to Integer where that number is a Double).
 
 #...
 
