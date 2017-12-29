@@ -17,7 +17,7 @@ If there are 10 participants, the die will have 10 sides with numbers ranging fr
 
 **[Example 2:]** 
 
-If there are 100 participants, the die will have 100 sides with numbers ranging from 1-100 and each of the participants will also roll the die 100 times individually. Their 100 rolls are totalled and compared against other participant total roll value to give them a standing. There can be ties.
+If there are 100 participants, the die will have 100 sides with numbers ranging from 1-100 and each of the participants will also roll the die 100 times individually. Their 100 rolls are totalled and compared against other participants total roll value to give them a standing. There can be ties.
 
 **A 6-Sided Die:**
 
