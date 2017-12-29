@@ -21,7 +21,7 @@ If there are 100 participants, the die will have 100 sides with numbers ranging 
 
 **A 6-Sided Die:**
 
-![6-Sided Die](https://github.com/PeruZee/PlanetFunderDiceLotto/blob/master/a%20die.jfif)
+<img src="img/a%20die.jfif" class="inline"/>
 
 
 # TO DO
@@ -47,12 +47,14 @@ If there are 100 participants, the die will have 100 sides with numbers ranging 
 4. TXIDListOne.txt
 
 
-#**Project Homepage:** (https://peruzee.github.io/PlanetFunderDiceLotto/)
+#**Project Homepage:** <a href="https://peruzee.github.io/PlanetFunderDiceLotto/">Project Home</a>
 
-#**Wiki Home:** (https://github.com/PeruZee/PlanetFunderDiceLotto/wiki)
+#**Wiki Home:** <a href="https://github.com/PeruZee/PlanetFunderDiceLotto/wiki">Project Wiki</a>
 
-#**Facebook:** (https://www.facebook.com/PlanetFunderInitiative/)
+#**Facebook:** <a href="https://www.facebook.com/PlanetFunderInitiative/">Project Facebook</a>
 
-#**Output Image (28/12/2017):** (https://github.com/PeruZee/PlanetFunderDiceLotto/raw/master/PlanetFunderOP.png)
+#**Output Image (28/12/2017):** 
+
+<img src="img/PlanetFunderOP.png" class="inline"/>
 
 **Licensed under the Eclipse Public License 1.0**
