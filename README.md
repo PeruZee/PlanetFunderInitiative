@@ -22,4 +22,6 @@
 
 #Wiki Home: https://github.com/PeruZee/PlanetFunderDiceLotto/wiki
 
+#Facebook: https://www.facebook.com/PlanetFunderInitiative/
+
 #Output Image (28/12/2017): https://github.com/PeruZee/PlanetFunderDiceLotto/raw/master/PlanetFunderOP.png
