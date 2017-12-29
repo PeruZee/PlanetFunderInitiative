@@ -10,3 +10,6 @@
 #TXIDListZero.txt
 #TXIDListOne.txt
 #...
+
+#Wiki Home: peruzee.github.io/Wiki
+#Output Image (28/12/2017): https://github.com/PeruZee/PlanetFunderDiceLotto/raw/master/PlanetFunderOP.png
