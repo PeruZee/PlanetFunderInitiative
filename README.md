@@ -13,6 +13,6 @@
 
 #Project Homepage: https://peruzee.github.io/PlanetFunderDiceLotto/
 
-#Wiki Home: https://peruzee.github.io/Wiki
+#Wiki Home: https://github.com/PeruZee/PlanetFunderDiceLotto/wiki
 
 #Output Image (28/12/2017): https://github.com/PeruZee/PlanetFunderDiceLotto/raw/master/PlanetFunderOP.png
