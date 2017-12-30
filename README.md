@@ -7,7 +7,7 @@ A Blockchain-ledger based transparent and charitable gaming platform. We will de
 1. The dice is rolled as many times as there are participants.
 2. The dice has as many sides as there are participants. 
 3. The lottery is choice-less and held every 12 hours (720 minutes).
-4. 10% Loser cashback. 50% Winner pool (60%: paid out instantly).
+4. 10% Loser cashback. 50% Winner pool. 5% Monthly Donation Funds (60%: paid out instantly + 5% Donation Funds transferred at the end of each month).
 
 **[Example 1: 10d10]** 
 
@@ -72,6 +72,6 @@ If there are 100 participants, the die will have 100 sides with numbers ranging 
 
 Step by Step, even The Mount Everest is climbable. 
 
-**We will donate 5% of every lottery to The Ocean Cleanup project for the first 12 months, users will be able to decide it later when they hold our tokens.**
+**MONTHLY: We will donate 5% of every lottery to The Ocean Cleanup project for the first 12 months, users will be able to decide it later when they hold our tokens.**
 
 **Licensed under the Eclipse Public License 1.0**
