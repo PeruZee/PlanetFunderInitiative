@@ -26,6 +26,7 @@ If there are 100 participants, the die will have 100 sides with numbers ranging 
 
 1. Declare participant TXIDs: 1st position, 2nd position etc. (Blueprint done: Shows ID, will also show actual TXID in string value)
 2. The cut off method between Winners and Losers [(p = Maximum Roll Total - Minimum Roll Total/2)] where [p] represents arbitrary percentage of losers per lottery period (rounded to Integer where the number is a Double).
+3. Reveal 50/50 Lotto Dice winnings tier structure.
 3. Integrate with Stellar Platform.
 4. Launch Platform: Pre-ICO Alpha.
 5. ICO: Launch THE SECOND Product. (coming soon)
