@@ -11,11 +11,11 @@ Contributors welcome.
 3. The lottery is held every 12 hours (720 minutes).
 
 
-**[Example 1:]** 
+**[Example 1: 10d10]** 
 
 If there are 10 participants, the die will have 10 sides with numbers ranging from 1-10 and each of the participants will also roll the die 10 times individually. Their 10 rolls are totalled and compared against other participants total roll value to give them a standing. There can be ties.
 
-**[Example 2:]** 
+**[Example 2: 100d100]** 
 
 If there are 100 participants, the die will have 100 sides with numbers ranging from 1-100 and each of the participants will also roll the die 100 times individually. Their 100 rolls are totalled and compared against other participants total roll value to give them a standing. There can be ties.
 
