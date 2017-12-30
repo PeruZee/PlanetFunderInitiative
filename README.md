@@ -7,7 +7,7 @@ A Blockchain-ledger based transparent and charitable gaming platform. We will de
 1. The dice is rolled as many times as there are participants.
 2. The dice has as many sides as there are participants. 
 3. The lottery is choice-less and held every 12 hours (720 minutes).
-4. 10% Loser cashback. 50% Winner pool (60%: paid out instantly)
+4. 10% Loser cashback. 50% Winner pool (60%: paid out instantly).
 
 **[Example 1: 10d10]** 
 
