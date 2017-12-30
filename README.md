@@ -1,8 +1,8 @@
 Step by Step, even The Mount Everest is climbable.
 
-We will donate 5% of every lottery to The Ocean Cleanup project. 10% Loser cashback. 50% Winner pool.
+We will donate 5% of every lottery to The Ocean Cleanup project. 10% Loser cashback. 50% Winner pool. Everybody wins.
 
-Contributors welcome.
+Contributors are welcome.
 
 # Lotto Dice System
 
