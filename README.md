@@ -19,7 +19,7 @@ If there are 10 participants, the die will have 10 sides with numbers ranging fr
 
 If there are 100 participants, the die will have 100 sides with numbers ranging from 1-100 and each of the participants will also roll the die 100 times individually. Their 100 rolls are totalled and compared against other participants total roll value to give them a standing. There can be ties.
 
-**A 6-Sided Die:**
+**A 6-Sided Dice: d6**
 
 <img src="img/a%20die.jfif" class="inline"/>
 
