@@ -37,7 +37,7 @@ If there are 100 participants, the die will have 100 sides with numbers ranging 
 1. Create nSided Rollbased Dice.
 2. Create 50/50 Lotto Architecture.
 3. Optimize initial Code.
-4. Set minimum dice Size at 10 sides and 10 rolls.
+4. Set minimum dice Size at 10 sides and 10 rolls (10d10).
 5. Store roll values per participant in an array, compare totals versus totals and display standings.
 
 
