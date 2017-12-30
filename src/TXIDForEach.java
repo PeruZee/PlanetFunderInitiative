@@ -26,7 +26,7 @@ public class TXIDForEach {
 		int num = 0;
 		int roll = 0;
 		Random  r = new Random();
-		if (nSides >=6) {
+		if (nSides >=10) {
 
 			for (int i = 0; i < number; i++) {
 
@@ -37,7 +37,7 @@ public class TXIDForEach {
 		}
 		else {
 
-			System.out.println("Error: The number picked needs to be from 6");
+			System.out.println("Error: The number picked needs to be from 10");
 		}
 		return num;
 	}
@@ -68,19 +68,19 @@ public class TXIDForEach {
 	private static int performThrows() {
 		
 		int nSize= TXIDList.size();
-		if (nSize > 0) {
+		if (nSize >= 10) {
 			//Variables that change based on number of IDs 
 			String quantityLine = "There are a total of: ";  
 			String unitLine =" TXIDs.";
 			int rollNumber =nSize;
 			int rollSides = nSize;
 			
-			//Change previous variables if there's only 1 ID
-			if(nSize==1) {
+			//Change previous variables if there's less than 10 ID
+			if(nSize==1 || nSize<=9 ) {
 				quantityLine = "There is: ";  
 				unitLine =" TXID.";
-				rollNumber =nSize * 7;
-				rollSides = 6;
+				rollNumber =nSize * 10;
+				rollSides = 10;
 			}
 			
 			System.out.println("\n" + quantityLine + nSize + unitLine + "\n");
