@@ -58,7 +58,7 @@ If there are 100 participants, the die will have 100 sides with numbers ranging 
 
 <img src="img/PlanetFunderOP.png" class="inline"/>
 
-**266 Sided Dice roll results (266d266):**
+**266 Sided Dice roll result by ID (266d266):**
 
 <img src="img/266d266.png" class="inline"/>
 
