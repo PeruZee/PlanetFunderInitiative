@@ -8,8 +8,7 @@ Contributors welcome.
 
 1. The dice is rolled as many times as there are participants.
 2. The dice has as many sides as there are participants. 
-3. The lottery is held every 12 hours (720 minutes).
-
+3. The lottery is choice-less and held every 12 hours (720 minutes).
 
 **[Example 1: 10d10]** 
 
