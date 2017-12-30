@@ -1,4 +1,4 @@
-# A Blockchain-based transparent charitable gaming platform.
+# A Blockchain-based transparent charitable gaming platform
 
 # Lotto Dice
 
