@@ -52,12 +52,13 @@ If there are 100 participants, the die will have 100 sides with numbers ranging 
 
 #**Facebook:** <a href="https://www.facebook.com/PlanetFunderInitiative/">Project Facebook</a>
 
-#**Output Images:** 
-**A 14 Sided Dice roll example (14d14):** 
+#**Output Images:**
+
+**A 14 Sided Dice roll example & results (14d14):** 
 
 <img src="img/PlanetFunderOP.png" class="inline"/>
 
-**A 266 Sided Dice roll Result**
+**266 Sided Dice roll results:**
 
 <img src="img/266d266.png" class="inline"/>
 
