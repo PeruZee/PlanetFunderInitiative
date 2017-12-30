@@ -47,9 +47,9 @@ If there are 100 participants, the die will have 100 sides with numbers ranging 
 4. TXIDListOne.txt
 
 
-#**Project Homepage:** <a href="https://peruzee.github.io/PlanetFunderDiceLotto/">Project Home</a>
+#**Project Homepage:** <a href="https://peruzee.github.io/PlanetFunderInitiative/">Project Home</a>
 
-#**Wiki Home:** <a href="https://github.com/PeruZee/PlanetFunderDiceLotto/wiki">Project Wiki</a>
+#**Wiki Home:** <a href="https://github.com/PeruZee/PlanetFunderInitiative/wiki">Project Wiki</a>
 
 #**Facebook:** <a href="https://www.facebook.com/PlanetFunderInitiative/">Project Facebook</a>
 
@@ -67,6 +67,8 @@ If there are 100 participants, the die will have 100 sides with numbers ranging 
 
 <img src="img/266d266_245.png" class="inline"/>
 
-Step by Step, even The Mount Everest is climbable. We will donate 5% of every lottery to The Ocean Cleanup project for the first 12 months, users will be able to decide it later when they hold our tokens. 
+Step by Step, even The Mount Everest is climbable. 
+
+**We will donate 5% of every lottery to The Ocean Cleanup project for the first 12 months, users will be able to decide it later when they hold our tokens.**
 
 **Licensed under the Eclipse Public License 1.0**
