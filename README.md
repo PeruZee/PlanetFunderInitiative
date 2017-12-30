@@ -1,6 +1,6 @@
 # WHO WE ARE 
 
-A Blockchain-ledger based transparent and charitable gaming platform.
+A Blockchain-ledger based transparent and charitable gaming platform. We will develop 20 gaming products based on Stellar blockchain ledger.
 
 # The First: 50/50 Lotto Dice
 
