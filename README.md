@@ -1,10 +1,6 @@
-Step by Step, even The Mount Everest is climbable.
+# A Blockchain-based transparent charitable gaming platform.
 
-We will donate 5% of every lottery to The Ocean Cleanup project. 10% Loser cashback. 50% Winner pool. Everybody wins.
-
-Contributors are welcome.
-
-# Lotto Dice System
+# Lotto Dice
 
 1. The dice is rolled as many times as there are participants.
 2. The dice has as many sides as there are participants. 
@@ -28,6 +24,8 @@ If there are 100 participants, the die will have 100 sides with numbers ranging 
 1. Declare participant TXIDs: 1st position, 2nd position etc. (Blueprint done: Shows ID, will also show actual TXID in string value)
 2. The cut off method between Winners and Losers [(p = Maximum Roll Total - Minimum Roll Total/2)] where [p] represents arbitrary percentage of losers per lottery period (rounded to Integer where the number is a Double).
 3. Integrate with Stellar Platform.
+
+**Contributors are welcome.**
 
 # DONE
 
@@ -66,6 +64,6 @@ If there are 100 participants, the die will have 100 sides with numbers ranging 
 
 <img src="img/266d266_245.png" class="inline"/>
 
-
+Step by Step, even The Mount Everest is climbable. We will donate 5% of every lottery to The Ocean Cleanup project. 10% Loser cashback. 50% Winner pool. 
 
 **Licensed under the Eclipse Public License 1.0**
