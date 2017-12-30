@@ -62,6 +62,10 @@ If there are 100 participants, the die will have 100 sides with numbers ranging 
 
 <img src="img/266d266.png" class="inline"/>
 
+**[Participant number 245]: Total of all rolls is 36077, on a 266 sided dice by rolling the dice 266 times.(266d266):**
+
+<img src="img/266d266_245.png" class="inline"/>
+
 
 
 **Licensed under the Eclipse Public License 1.0**
