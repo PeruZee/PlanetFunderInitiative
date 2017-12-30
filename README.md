@@ -28,16 +28,17 @@ If there are 100 participants, the die will have 100 sides with numbers ranging 
 2. The cut off method between Winners and Losers [(p = Maximum Roll Total - Minimum Roll Total/2)] where [p] represents arbitrary percentage of losers per lottery period (rounded to Integer where the number is a Double).
 3. Integrate with Stellar Platform.
 4. Launch Platform: Pre-ICO Alpha.
-5. ICO: Launch THE SECOND Product (coming soon)
+5. ICO: Launch THE SECOND Product. (coming soon)
 
 **Contributors are welcome.**
 
 # DONE
 
-1. Create nSided Rollbased Dice
-2. Create 50/50 Lotto Architecture
-3. Optimize initial Code
-4. Store roll values per participant in an array, compare totals versus totals and display standings.
+1. Create nSided Rollbased Dice.
+2. Create 50/50 Lotto Architecture.
+3. Optimize initial Code.
+4. Set minimum dice Size at 10 sides and 10 rolls.
+5. Store roll values per participant in an array, compare totals versus totals and display standings.
 
 
 
