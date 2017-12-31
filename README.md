@@ -4,7 +4,7 @@ A Blockchain-ledger based transparent and charitable gaming platform. We will de
 
 # NEWS
 
-We have decided to give away 2.2% of our Lifetime Token Supply [924,000 Tokens] during our bounty platform, ALPHA Wallet and THE FIRST: 50/50 Lotto Dice BETA launch phase. You will get to play on our platform and it's on us!
+We have decided to **give away** 2.2% of our Lifetime Token Supply [924,000 Tokens] during our bounty platform, ALPHA Wallet and THE FIRST: 50/50 Lotto Dice BETA launch phase. You will get to play on our platform and it's on us!
 
 We have also decided to launch Pre-Initial Coin Offering Phase with [4.2 Million Tokens] (10% of Total Lifetime Tokens) @ [$0.25 per token] (scales to a maximum of $0.75 before ICO)
 
