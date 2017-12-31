@@ -29,7 +29,7 @@ If there are 100 participants, the die will have 100 sides with numbers ranging 
 3. Reveal 50/50 Lotto Dice winnings tier structure.
 3. Integrate with Stellar Platform.
 4. Generate Platform Tokens.
-5. Giveaways: Launch Wallet Alpha & Bounty Platform **(2.2% of 42 Million Lifetime Tokens)**
+5. **Giveaways: Launch Wallet Alpha & Bounty Platform (2.2% of 42 Million Lifetime Tokens)**
 6. Launch Platform: Pre-ICO Alpha.
 7. ICO: Launch THE SECOND Product. (coming soon)
 
