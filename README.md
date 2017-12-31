@@ -2,6 +2,18 @@
 
 A Blockchain-ledger based transparent and charitable gaming platform. We will develop 20 gaming products based on Stellar blockchain ledger.
 
+# NEWS
+
+We have decided to give away 2.2% of our Lifetime Token Supply [924,000 Tokens] during our bounty platform, ALPHA Wallet and THE FIRST: 50/50 Lotto Dice BETA launch phase. You will get to play on our platform and it's on us!
+
+We have also decided to launch Pre-Initial Coin Offering Phase with [4.2 Million Tokens] (10% of Total Lifetime Tokens) @ [$0.25 per token] (scales to a maximum of $0.75 before ICO)
+
+ICO Phase will see the launch of THE SECOND product ALPHA version and the public will be able to purchase a total of [5.376 Million Tokens] (12.8% of Total Lifetime Tokens) @ [$0.75 per Token] (scales after ICO).
+
+[Note]: You can use all major [Cryptocurrencies] and [USDT] or [EURT] to purchase tokens. Total of [42 Million Tokens] to ever be generated!
+
+Happy New YEAR and See you in 2018!
+
 # The First: 50/50 Lotto Dice
 
 1. The dice is rolled as many times as there are participants.
