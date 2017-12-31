@@ -28,8 +28,10 @@ If there are 100 participants, the die will have 100 sides with numbers ranging 
 2. The cut off method between Winners and Losers [(p = Maximum Roll Total - Minimum Roll Total/2)] where [p] represents arbitrary percentage of losers per lottery period (rounded to Integer where the number is a Double).
 3. Reveal 50/50 Lotto Dice winnings tier structure.
 3. Integrate with Stellar Platform.
-4. Launch Platform: Pre-ICO Alpha.
-5. ICO: Launch THE SECOND Product. (coming soon)
+4. Generate Platform Tokens.
+5. Giveaways: Launch Wallet Alpha & Bounty Platform **(2.2% of 42 Million Lifetime Tokens)**
+6. Launch Platform: Pre-ICO Alpha.
+7. ICO: Launch THE SECOND Product. (coming soon)
 
 **Contributors are welcome.**
 
