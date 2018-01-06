@@ -25,14 +25,12 @@ public class MakeTestAccount {
         
         
         //friendbotUrl: Uses testnet friendbot to fund account
-        String friendbotUrl = String.format(
-                "https://horizon-testnet.stellar.org/friendbot?addr=%s",
-                pair.getAccountId());
+        String friendbotUrl = String.format("https://horizon-testnet.stellar.org/friendbot?addr=%s", pair.getAccountId());
         InputStream response = new URL(friendbotUrl).openStream();
         
         @SuppressWarnings("resource") //suppressing resource warning
-		String body = new Scanner(response, "UTF-8").useDelimiter("\\A").next();
-        System.out.println("\nSUCCESS! You have a new account!\n" + body);
+	String body = new Scanner(response, "UTF-8").useDelimiter("\\A").next();
+        System.out.println("\nSUCCESS! You have a new TESTNet account!\n" + body);
         
         
         //server: Stellar server (testnet)
