@@ -62,12 +62,6 @@ If there are 100 participants, the die will have 100 sides with numbers ranging 
 
 # Java project files @ ./src/*
 
-1. TXIDForEach.java
-2. TXIDList.txt
-3. TXIDListZero.txt
-4. TXIDListOne.txt
-
-
 #**Project Homepage:** <a href="https://peruzee.github.io/PlanetFunderInitiative/">Project Home</a>
 
 #**Wiki Home:** <a href="https://github.com/PeruZee/PlanetFunderInitiative/wiki">Project Wiki</a>
