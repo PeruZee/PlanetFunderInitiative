@@ -36,7 +36,7 @@ public class MakeTestAccount {
         //server: Stellar server (testnet)
         Server server = new Server("https://horizon-testnet.stellar.org");
         
-        //balance: fetches account balances for generated account
+        //balance, AccountResponse: fetches account balances for generated account by getting current sequence
         AccountResponse account = server.accounts().account(KeyPair.fromAccountId(pair.getAccountId()));
         System.out.println("\nBalances for account: \n" + pair.getAccountId());
         for (AccountResponse.Balance balance : account.getBalances()) {
