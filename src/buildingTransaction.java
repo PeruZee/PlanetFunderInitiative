@@ -34,7 +34,7 @@ public class buildingTransaction {
 	                .addOperation(new PaymentOperation.Builder(destination, new AssetTypeNative(), "10"/*XLM*/).build())
 
 	//5. Add memo to transaction
-	                .addMemo(Memo.text("TEST_MEMO_HERE"))/*memotext*/
+	                .addMemo(Memo.text(""))/*optional memotext*/
 	                .build();
 
 	//6. Sign the transaction using "source" Seed
