@@ -26,32 +26,37 @@ public class buildingTransaction {
         Server server = new Server("https://horizon-testnet.stellar.org");
         
     //Asks user for Source account seed
+    	System.out.println("\nEnter the source account seed: ");
+    	String input = scanner.nextLine();
+        KeyPair source;
+        
         try {
-	    	System.out.println("\nEnter the source account seed: ");
-            	String input = scanner.nextLine();
             	source = KeyPair.fromSecretSeed(input);
             	TimeUnit.SECONDS.sleep(2); //wait 2 seconds
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             	throw new RuntimeException("Error! Something went wrong!");
         }
-                KeyPair source;
 		
     //Asks user for destination account address
-        try {
 		System.out.println("\nEnter the destination account add: ");
-        	String input2 = scanner.nextLine();
+    	String input2 = scanner.nextLine();
+        KeyPair destination;
+    	
+        try {
             	destination = KeyPair.fromAccountId(input2);
             	TimeUnit.SECONDS.sleep(2); //wait 2 seconds
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             	throw new RuntimeException("Error! Something went wrong!");
         }
-                KeyPair destination;
 
-    //Asks user for amount of XLM to be sent
+    //Asks user for amount of Lumens(XLM) to be sent
         try {
-        	System.out.println("\nEnter the amount of XLM to send: ");
+        	System.out.println("\nEnter the amount of Lumens(XLM) to send: ");
         	TimeUnit.SECONDS.sleep(2); //wait 2 seconds
-    	} catch (Exception e) {
+    	}
+        catch (Exception e) {
         	throw new RuntimeException("Error! Something went wrong!");
     	}
         	String amount = scanner.nextLine();
@@ -84,7 +89,7 @@ public class buildingTransaction {
 	            	System.out.println("\nExtras: " + response.getExtras());
 	        }
 	        catch (Exception e) {
-	        	System.out.println("\nSomething went wrong!");
+	        	System.out.println("\nError! Something went wrong!");
 	        	System.out.println(e.getMessage());
 	        }
 	//8. Get account balances for source account        
