@@ -15,17 +15,17 @@ import org.stellar.sdk.responses.AccountResponse;
 import org.stellar.sdk.responses.SubmitTransactionResponse;
 
 public class buildingTransaction {
-   @SuppressWarnings("resource")
+    private static Scanner scanner = new Scanner( System.in );
+
 	public static void main(String[] args) throws IOException {
 
 	Network.useTestNetwork();
-    //Server (TESTNet)
+	//Server (TESTNet)
         Server server = new Server("https://horizon-testnet.stellar.org");
-
-    //Asks user for Source account seed    
-        Scanner seed1 = new Scanner(System.in);
+        
+    //Asks user for Source account seed
         System.out.println("\nEnter the source account seed: ");
-        String input = seed1.nextLine();
+        String input = scanner.nextLine();
         KeyPair source;
 
     //Uses user input as source seed
@@ -35,11 +35,10 @@ public class buildingTransaction {
         } catch (Exception e) {
             throw new RuntimeException("Error!");
         }
-
+        
     //Asks user for destination account address
-        Scanner dest1 = new Scanner(System.in);
         System.out.println("\nEnter the destination account add: ");
-        String input2 = dest1.nextLine();
+        String input2 = scanner.nextLine();
         KeyPair destination;
 
     //Uses user input as destination account address
@@ -49,11 +48,10 @@ public class buildingTransaction {
         } catch (Exception e) {
             throw new RuntimeException("Error!");
         }
-
+        
     //Asks user for amount of XLM to be sent
-        Scanner amt1 = new Scanner(System.in);
         System.out.println("\nEnter the amount of XLM to send: ");
-        String amount = amt1.nextLine();
+        String amount = scanner.nextLine();
 
 	//1. Confirm the account ID exists
 	        server.accounts().account(destination);
