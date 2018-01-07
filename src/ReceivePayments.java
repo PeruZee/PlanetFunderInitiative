@@ -4,7 +4,7 @@
  * Reference Libs: stellar-sdk.jar
  * This program shows all payment paging tokens of an account and---
  * --asks USER for the account number
- *---shows all payments on account.
+ *---shows all payments and account balances.
  * Handles ioexception.
  */
 
