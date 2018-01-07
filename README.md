@@ -36,27 +36,24 @@ If there are 100 participants, the die will have 100 sides with numbers ranging 
 
 # TO DO
 
-1. Declare participant TXIDs: 1st position, 2nd position etc. (Blueprint done: Shows ID, will also show actual TXID in string value)
-2. The cut off method between Winners and Losers [(p = Maximum Roll Total - Minimum Roll Total/2)] where [p] represents arbitrary percentage of losers per lottery period (rounded to Integer where the number is a Double).
-3. Reveal 50/50 Lotto Dice winnings tier structure.
-4. Integrate with Stellar Platform.
-5. Generate Platform Tokens and reveal Token Utility Model.
-6. **Giveaways: Launch Wallet Alpha & Bounty Platform (2.2% of 42 Million Lifetime Tokens)**
-7. **Launch BETA Platform: Pre-ICO Alpha (10% of Total Lifetime Tokens)**
-8. **ICO: Launch THE SECOND Product (12.8% of Total Lifetime Tokens)** [product reveal coming soon]
+1. Integrate with Stellar Platform.
+2. Integrate with Web front-end.
+3. Generate Platform Tokens and reveal Token Utility Model.
+4. **Giveaways: Launch Wallet Alpha & Bounty Platform (2.2% of 42 Million Lifetime Tokens)**
+5. **Launch BETA Platform: Pre-ICO Alpha (10% of Total Lifetime Tokens)**
+6. **ICO: Launch THE SECOND Product (12.8% of Total Lifetime Tokens)** [product reveal coming soon]
 
 **Contributors are welcome.**
 
 # DONE
 
-1. Test Stellar integration
-2. Generate Test Tokens
-3. Create Token Distribution and Utility model
-4. Create nSided Rollbased Dice.
+1. Create Token Distribution and Utility model
+2. Create Transaction builder.
+3. Test Wallet Compability.
+4. Create nSided Rollbased Dice (default: 10d10).
 5. Create 50/50 Lotto Architecture.
 6. Optimize initial Code.
-7. Set minimum dice Size at 10 sides and 10 rolls (10d10).
-8. Store roll values per participant in an array, compare totals versus totals and display standings.
+7. Store roll values per participant in an array, compare totals versus totals and display standings.
 
 
 
