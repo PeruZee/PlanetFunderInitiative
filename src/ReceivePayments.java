@@ -95,7 +95,7 @@ public class ReceivePayments {
 
         Network.useTestNetwork();
         Server server = new Server("https://horizon-testnet.stellar.org");
-        KeyPair account = KeyPair.fromAccountId("GAY4R5KD5BNQLHIQC754LF6BMPVIDV3NEDS7WY4RB7235VRVT7MKJQ76");
+        KeyPair account = KeyPair.fromAccountId("GCLWP62MDY5HCFE3GCYGDNLHHL5RS57UX6XIS57UIO6K5H6OYGRP54AC");
         
         PaymentsRequestBuilder paymentsRequest = server.payments().forAccount(account);
          
