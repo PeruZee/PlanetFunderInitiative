@@ -15,7 +15,7 @@ import org.stellar.sdk.*;
 import org.stellar.sdk.responses.AccountResponse;
 import org.stellar.sdk.responses.SubmitTransactionResponse;
 
-public class buildingTransaction {
+public class BuildingTransaction {
 
     private static Scanner scanner = new Scanner( System.in );
     
