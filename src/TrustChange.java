@@ -87,7 +87,7 @@ public class TrustChange {
         	throw new RuntimeException("\nError! Something went wrong!");
 		}
 		// Get account balances for source account
-        System.out.println("\nBalances for account: " + source.getAccountId());
+        System.out.println("\nPrevious Balances for account: " + source.getAccountId());
 	        for (AccountResponse.Balance balance : receiving.getBalances()) {
 	        		System.out.println("\nType: " + balance.getAssetType());
 	        		System.out.println("Code: " + balance.getAssetCode());
