@@ -19,9 +19,9 @@ public class buildingTransaction {
 	public static void main(String[] args) throws IOException {
 
 	Network.useTestNetwork();
-	//Server (TESTNet)
+    //Server (TESTNet)
         Server server = new Server("https://horizon-testnet.stellar.org");
-        
+
     //Asks user for Source account seed    
         Scanner seed1 = new Scanner(System.in);
         System.out.println("\nEnter the source account seed: ");
@@ -35,7 +35,7 @@ public class buildingTransaction {
         } catch (Exception e) {
             throw new RuntimeException("Error!");
         }
-        
+
     //Asks user for destination account address
         Scanner dest1 = new Scanner(System.in);
         System.out.println("\nEnter the destination account add: ");
@@ -49,7 +49,7 @@ public class buildingTransaction {
         } catch (Exception e) {
             throw new RuntimeException("Error!");
         }
-        
+
     //Asks user for amount of XLM to be sent
         Scanner amt1 = new Scanner(System.in);
         System.out.println("\nEnter the amount of XLM to send: ");
