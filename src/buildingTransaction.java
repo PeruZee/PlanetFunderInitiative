@@ -71,11 +71,11 @@ public class buildingTransaction {
 	        Transaction transaction = new Transaction.Builder(sourceAccount)
 
 	//4. Add payment operation to account
-	                .addOperation(new PaymentOperation.Builder(destination, new AssetTypeNative(), amount).build())
+	        .addOperation(new PaymentOperation.Builder(destination, new AssetTypeNative(), amount).build())
 
 	//5. Add memo to transaction
-	                .addMemo(Memo.text("")) //optional memotext
-	                .build();
+	        .addMemo(Memo.text("")) //optional memotext
+	        .build();
 
 	//6. Sign the transaction using "source" Seed
 	        transaction.sign(source);
@@ -83,10 +83,10 @@ public class buildingTransaction {
 	//7. Send to Stellar network to submit transaction and get Ledger number & Transaction Hash, extras if errors
 	        try {
 	        	SubmitTransactionResponse response = server.submitTransaction(transaction);
-	            System.out.println("\nSuccess! " + amount + " Lumens(XLM) were sent!\n");
-	            System.out.println("Ledger Number:\n" + response.getLedger());
-	            System.out.println("Transaction Hash:\n" + response.getHash());
-	            System.out.println("\nExtras: " + response.getExtras());
+	            	System.out.println("\nSuccess! " + amount + " Lumens(XLM) were sent!\n");
+	            	System.out.println("Ledger Number:\n" + response.getLedger());
+	            	System.out.println("Transaction Hash:\n" + response.getHash());
+	            	System.out.println("\nExtras: " + response.getExtras());
 	        }
 	        catch (Exception e) {
 	        	System.out.println("\nSomething went wrong!");
@@ -94,11 +94,11 @@ public class buildingTransaction {
 	        }
 	//8. Get account balances for source account        
 	        AccountResponse sourceAccount1 = server.accounts().account(KeyPair.fromAccountId(source.getAccountId()));
-	        System.out.println("\nBalances for account: \n" + source.getAccountId());
+	        	System.out.println("\nBalances for account: \n" + source.getAccountId());
 	        for (AccountResponse.Balance balance : sourceAccount1.getBalances()) {
 	        	System.out.println("\nType: " + balance.getAssetType());
 	        	System.out.println("Code: " + balance.getAssetCode());
 	        	System.out.println("Balance: " + balance.getBalance());
-	        	}
+	      	}
 	}
 }
