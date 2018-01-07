@@ -70,17 +70,17 @@ public class buildingTransaction {
 	//3. Start building a transaction
 	        Transaction transaction = new Transaction.Builder(sourceAccount)
 
-	//4. Add payment operation to account
+	//3.1. Add payment operation to account
 	        .addOperation(new PaymentOperation.Builder(destination, new AssetTypeNative(), amount).build())
 
-	//5. Add memo to transaction
+	//3.2. Add memo to transaction
 	        .addMemo(Memo.text("")) //optional memotext
 	        .build();
 
-	//6. Sign the transaction using "source" Seed
+	//3.3. Sign the transaction using "source" Seed
 	        transaction.sign(source);
 
-	//7. Send to Stellar network to submit transaction and get Ledger number & Transaction Hash, extras if errors
+	//4. Send to Stellar network to submit transaction and get Ledger number & Transaction Hash, extras if errors
 	        try {
 	        	SubmitTransactionResponse response = server.submitTransaction(transaction);
 	            	System.out.println("\nSuccess! " + amount + " Lumens(XLM) were sent!\n");
@@ -92,7 +92,7 @@ public class buildingTransaction {
 	        	System.out.println("\nError! Something went wrong!");
 	        	System.out.println(e.getMessage());
 	        }
-	//8. Get account balances for source account        
+	//5. Get account balances for source account        
 	        AccountResponse sourceAccount1 = server.accounts().account(KeyPair.fromAccountId(source.getAccountId()));
 	        	System.out.println("\nBalances for account: \n" + source.getAccountId());
 	        for (AccountResponse.Balance balance : sourceAccount1.getBalances()) {
