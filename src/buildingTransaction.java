@@ -15,12 +15,13 @@ import org.stellar.sdk.responses.AccountResponse;
 import org.stellar.sdk.responses.SubmitTransactionResponse;
 
 public class buildingTransaction {
+
     private static Scanner scanner = new Scanner( System.in );
 
 	public static void main(String[] args) throws IOException {
 
 	Network.useTestNetwork();
-	//Server (TESTNet)
+    //Server (TESTNet)
         Server server = new Server("https://horizon-testnet.stellar.org");
         
     //Asks user for Source account seed
