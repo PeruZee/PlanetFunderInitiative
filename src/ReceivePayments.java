@@ -31,7 +31,7 @@ public class ReceivePayments {
     }    	
     public static void savePagingToken(String pagingToken) {
         myToken = pagingToken;
-        System.out.println(String.format("\nPaging Token is: %s\n", myToken));
+//        System.out.println(String.format("\nPaging Token is: %s\n", myToken));
     }
 
     private static class EventListenerImpl implements EventListener<OperationResponse> {
@@ -47,26 +47,29 @@ public class ReceivePayments {
                 // Record the paging token so we can start from here next time.
                 savePagingToken(payment.getPagingToken());
 
+                Asset asset = ((PaymentOperationResponse) payment).getAsset();
+
+                boolean xlm = asset.equals(new AssetTypeNative());
+                boolean actid = ((PaymentOperationResponse) payment).getFrom().equals(account); 
+
+                String amount = ((PaymentOperationResponse) payment).getAmount();
+                String actidTo = ((PaymentOperationResponse) payment).getTo().getAccountId();
+                String actidFrom = ((PaymentOperationResponse) payment).getFrom().getAccountId();
+                String assetName;
+
                 // The payments stream includes both sent and received payments. We only
                 // want to process received payments here.
+                
                 if (payment instanceof PaymentOperationResponse) {
-                    if (((PaymentOperationResponse) payment).getTo().equals(account)) {
-                        return;
-                    }
-                    
-                    String amount = ((PaymentOperationResponse) payment).getAmount();
-                    
-                    Asset asset = ((PaymentOperationResponse) payment).getAsset();
-                    String assetName;
-                    if (!asset.equals(new AssetTypeNative())) {
-                        assetName = "zZz";
-                        StringBuilder output = new StringBuilder();
-                        output.append(amount);
-                        output.append(" ");
-                        output.append(assetName);
-                        output.append(" to: ");
-                        output.append(((PaymentOperationResponse) payment).getTo().getAccountId());
-                        System.out.println(output.toString());
+                    	if (actid == true && xlm == true) {
+                    		assetName = "Lumens (XLM)";
+                    		StringBuilder output = new StringBuilder();
+                    		output.append(amount);
+                    		output.append(" ");
+                    		output.append(assetName);
+                    		output.append(" received to: ");
+                    		output.append(actidTo);
+                    		System.out.println(output.toString());
 /*FOR LATER
 *			StringBuilder assetNameBuilder = new StringBuilder();
 *			assetNameBuilder.append(((AssetTypeCreditAlphaNum) asset).getCode());
@@ -75,22 +78,21 @@ public class ReceivePayments {
 *			assetName = assetNameBuilder.toString();
 *END FOR LATER
 */
-                    }
-                    else {
-                        assetName = "Lumens (XLM)";
-                        StringBuilder output = new StringBuilder();
-                        output.append(amount);
-                        output.append(" ");
-                        output.append(assetName);
-                        output.append(" from: ");
-                        output.append(((PaymentOperationResponse) payment).getFrom().getAccountId());
-                        System.out.println(output.toString());
-                    }
-                    
+                    	}
+                    	else if (!(actid == true && xlm == true)) {
+                    		assetName = "Lumens (XLM)";
+                    		StringBuilder output = new StringBuilder();
+                    		output.append(amount);
+                    		output.append(" ");
+                    		output.append(assetName);
+                    		output.append(" sent from: ");
+                    		output.append(actidFrom);
+                    		System.out.println(output.toString());
+                    		}
+                    	}
                 }
-            
-            }
-    }
+        }
+
     public static void main(String[] args) throws IOException {
 
         Network.useTestNetwork();
