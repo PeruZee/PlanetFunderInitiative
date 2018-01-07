@@ -4,6 +4,7 @@
  * Reference Libs: stellar-sdk.jar
  * This program shows all payment paging tokens of an account and---
  * --asks USER for the account number // tbd
+ *---stream all incoming payments only
  * also lists incoming payments and amount if it's XLM.
  * Handles ioexception.
  */
@@ -67,11 +68,11 @@ public class ReceivePayments {
                         output.append(((PaymentOperationResponse) payment).getTo().getAccountId());
                         System.out.println(output.toString());
 /*FOR LATER
-*						StringBuilder assetNameBuilder = new StringBuilder();
-*						assetNameBuilder.append(((AssetTypeCreditAlphaNum) asset).getCode());
-*						assetNameBuilder.append(":");
-*						assetNameBuilder.append(((AssetTypeCreditAlphaNum) asset).getIssuer().getAccountId());
-*						assetName = assetNameBuilder.toString();
+*			StringBuilder assetNameBuilder = new StringBuilder();
+*			assetNameBuilder.append(((AssetTypeCreditAlphaNum) asset).getCode());
+*			assetNameBuilder.append(":");
+*			assetNameBuilder.append(((AssetTypeCreditAlphaNum) asset).getIssuer().getAccountId());
+*			assetName = assetNameBuilder.toString();
 *END FOR LATER
 */
                     }
