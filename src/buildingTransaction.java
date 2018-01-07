@@ -26,40 +26,35 @@ public class buildingTransaction {
         Server server = new Server("https://horizon-testnet.stellar.org");
         
     //Asks user for Source account seed
-        System.out.println("\nEnter the source account seed: ");
-        String input = scanner.nextLine();
-        KeyPair source;
-
-    //Uses user input as source seed
         try {
-            source = KeyPair.fromSecretSeed(input);
-            TimeUnit.SECONDS.sleep(2); //wait 2 seconds
+	    	System.out.println("\nEnter the source account seed: ");
+            	String input = scanner.nextLine();
+            	source = KeyPair.fromSecretSeed(input);
+            	TimeUnit.SECONDS.sleep(2); //wait 2 seconds
         } catch (Exception e) {
-            throw new RuntimeException("Error! Something went wrong!");
+            	throw new RuntimeException("Error! Something went wrong!");
         }
-        
+                KeyPair source;
+		
     //Asks user for destination account address
-        System.out.println("\nEnter the destination account add: ");
-        String input2 = scanner.nextLine();
-        KeyPair destination;
-
-    //Uses user input as destination account address
         try {
-            destination = KeyPair.fromAccountId(input2);
-            TimeUnit.SECONDS.sleep(2); //wait 2 seconds
+		System.out.println("\nEnter the destination account add: ");
+        	String input2 = scanner.nextLine();
+            	destination = KeyPair.fromAccountId(input2);
+            	TimeUnit.SECONDS.sleep(2); //wait 2 seconds
         } catch (Exception e) {
-            throw new RuntimeException("Error! Something went wrong!");
+            	throw new RuntimeException("Error! Something went wrong!");
         }
-        
+                KeyPair destination;
+
     //Asks user for amount of XLM to be sent
         try {
-        System.out.println("\nEnter the amount of XLM to send: ");
-        TimeUnit.SECONDS.sleep(2); //wait 2 seconds
+        	System.out.println("\nEnter the amount of XLM to send: ");
+        	TimeUnit.SECONDS.sleep(2); //wait 2 seconds
     	} catch (Exception e) {
-        throw new RuntimeException("Error! Something went wrong!");
+        	throw new RuntimeException("Error! Something went wrong!");
     	}
-        String amount = scanner.nextLine();
-
+        	String amount = scanner.nextLine();
 
 	//1. Confirm the account ID exists
 	        server.accounts().account(destination);
