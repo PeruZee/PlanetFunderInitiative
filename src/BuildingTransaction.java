@@ -82,23 +82,22 @@ public class BuildingTransaction {
 
 	//4. Send to Stellar network to submit transaction and get Ledger number & Transaction Hash, extras if errors
 	        try {
-	        	SubmitTransactionResponse response = server.submitTransaction(transaction);
-	            	System.out.println("\nSuccess! " + amount + " Lumens(XLM) were sent!\n");
+	        		SubmitTransactionResponse response = server.submitTransaction(transaction);
+	            	System.out.println("\nSuccess! You sent " + amount + " Lumens(XLM)!\n");
 	            	System.out.println("Ledger Number:\n" + response.getLedger());
 	            	System.out.println("Transaction Hash:\n" + response.getHash());
 	            	System.out.println("\nExtras: " + response.getExtras());
 	        }
 	        catch (Exception e) {
-	        	System.out.println("\nError! Something went wrong!");
-	        	System.out.println(e.getMessage());
+	        		System.out.println("\nError! Something went wrong!");
+	        		System.out.println(e.getMessage());
 	        }
-	//5. Get account balances for source account        
-	        AccountResponse sourceAccount1 = server.accounts().account(KeyPair.fromAccountId(source.getAccountId()));
-	        	System.out.println("\nBalances for account: \n" + source.getAccountId());
-	        for (AccountResponse.Balance balance : sourceAccount1.getBalances()) {
-	        	System.out.println("\nType: " + balance.getAssetType());
-	        	System.out.println("Code: " + balance.getAssetCode());
-	        	System.out.println("Balance: " + balance.getBalance());
+	//5. Get account balances for source account
+	        System.out.println("\nBalances for account: \n" + source.getAccountId());
+	        for (AccountResponse.Balance balance : sourceAccount.getBalances()) {
+	        		System.out.println("\nType: " + balance.getAssetType());
+	        		System.out.println("Code: " + balance.getAssetCode());
+	        		System.out.println("Balance: " + balance.getBalance());
 	      	}
 	}
 }
