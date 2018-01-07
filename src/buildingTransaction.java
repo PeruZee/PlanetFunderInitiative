@@ -5,8 +5,8 @@
  * Now this program sends payments to another account by prompting--
  * --USER for "source account seed", "destination account address" and--
  * --"amount of XLM" from "source" account to "destination" account.
- * Also displays ledger number, Transaction Hash & Balances at the end.
- * Handles ioexception
+ * Also displays Ledger number, Transaction Hash & Source account balances.
+ * Handles ioexception.
  */
 import java.io.*;
 import java.util.Scanner;
@@ -39,7 +39,7 @@ public class buildingTransaction {
         }
 		
     //Asks user for destination account address
-		System.out.println("\nEnter the destination account add: ");
+	System.out.println("\nEnter the destination account add: ");
     	String input2 = scanner.nextLine();
         KeyPair destination;
     	
