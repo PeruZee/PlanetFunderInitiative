@@ -12,7 +12,7 @@ We have also decided to launch **Pre-Initial Coin Offering** Phase with **[4.2 M
 
 [Note]: You can use all major [Cryptocurrencies] and [USDT] or [EURT] to purchase tokens. **[Total of 42 Million Tokens to ever be generated!]**
 
-Happy New YEAR and See you in 2018!
+We are currently working on the Alpha Platform!
 
 # The First: 50/50 Lotto Dice
 
