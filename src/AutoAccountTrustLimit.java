@@ -4,7 +4,7 @@
  * -This program makes an account KeyPair
  * on the Stellar TEST Net using Random Seed
  * -Uses //FreindBot// to fund the account with 10,000 XLM
- * -Allows Asset(TBC) to be Trusted
+ * -Allows Asset(TBC) to be Trusted automatically.
  * -Prompts user for amount of asset (TBC) to trust and
  * -Displays the transaction details and balances at the end.
  * -Handles ioexceptions
