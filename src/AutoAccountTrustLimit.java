@@ -4,10 +4,10 @@
  * -This program makes an account KeyPair
  * on the Stellar TEST Net using Random Seed
  * -Uses //FreindBot// to fund the account with 10,000 XLM
- * -Allows Asset(TBC) to be Trusted automatically.
+ * -Allows Asset(TBC) to be Trusted by adding a TrustLine
  * -Prompts user for amount of asset (TBC) to trust and
  * -Displays the transaction details and balances at the end.
- * -Handles ioexceptions
+ * -Handles IOExceptions
  */
 import java.net.*;
 import java.io.*;
@@ -17,7 +17,7 @@ import org.stellar.sdk.*;
 import org.stellar.sdk.responses.AccountResponse;
 import org.stellar.sdk.responses.SubmitTransactionResponse;
 
-//MakeTestAccount: Class to make the account
+//AutoAccountTrustLimit: Class to make the account
 public class AutoAccountTrustLimit {
 	
 	private static Scanner scanner = new Scanner( System.in );
@@ -73,10 +73,10 @@ public class AutoAccountTrustLimit {
     	}
         	String amount = scanner.nextLine();
 		
-		// Represent the Asset
+		//1. Represent the Asset
 		Asset TBC = Asset.createNonNativeAsset("TBC", issuingKeys);
 
-		// Make the receiving account trust the asset
+		//2. Make the receiving account trust the asset
 		AccountResponse receiving = null;
 		try {
 			receiving = server.accounts().account(source);
@@ -84,17 +84,17 @@ public class AutoAccountTrustLimit {
 		}
 	    catch (Exception e) {
 	        	throw new RuntimeException("Error! Something went wrong!");
-	       	}
-		
+	       	}		
 		Transaction allowTBC = new Transaction.Builder(receiving)
 		  .addOperation(
-		// ChangeTrust operation creates (or alters) a Trustline
+		//2.1. ChangeTrust operation creates (or alters) a TrustLine
 		// Second parameter limits the amount
 		    new ChangeTrustOperation.Builder(TBC, amount).build())
 		  .build();
-		allowTBC.sign(source); //sign using above source seed
+		//2.2 sign using above source Secret Seed
+		allowTBC.sign(source);
 		
-		// Display Ledger number and Transaction Hash if it was a success
+		//3. Display Ledger number and Transaction Hash if it was a success
 		try {
 			SubmitTransactionResponse res = server.submitTransaction(allowTBC);
 			if (!res.isSuccess() == false) {
