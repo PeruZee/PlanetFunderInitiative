@@ -4,7 +4,7 @@
  * Reference Libs: stellar-sdk.jar
  * This program shows all payment paging tokens of an account and---
  * --asks USER for the account number
- *---shows all payments and account balances.
+ *---shows all payment activities on account.
  * Handles ioexception.
  */
 
@@ -34,7 +34,7 @@ public class ReceivePayments {
     }    	
     public static void savePagingToken(String pagingToken) {
         myToken = pagingToken;
-        System.out.println(String.format("\nPaging Token is: %s", myToken));
+//        System.out.println(String.format("\nPaging Token is %s", myToken + ":"));
     }
 
     private static class EventListenerImpl implements EventListener<OperationResponse> {
@@ -47,64 +47,62 @@ public class ReceivePayments {
 
         @Override
         public void onEvent(OperationResponse payment) {
-                // Record the paging token so we can start from here next time (doesn't work)
+                // Record the paging token so we can start from here next time (???)
                 savePagingToken(payment.getPagingToken());
 
                 Asset asset = ((PaymentOperationResponse) payment).getAsset();
 
-                boolean xlm = asset.equals(new AssetTypeNative());
-                boolean actid = ((PaymentOperationResponse) payment).getTo().equals(account); 
+                boolean XLM = asset.equals(new AssetTypeNative());
+                boolean actID = ((PaymentOperationResponse) payment).getTo().equals(account); 
 
                 String amount = ((PaymentOperationResponse) payment).getAmount();
-                String actidTo = ((PaymentOperationResponse) payment).getTo().getAccountId();
-                String actidFrom = ((PaymentOperationResponse) payment).getFrom().getAccountId();
+                String actIDTo = ((PaymentOperationResponse) payment).getTo().getAccountId();
+                String actIDFrom = ((PaymentOperationResponse) payment).getFrom().getAccountId();
+                
                 String assetName;
 
                 // The payments stream includes both sent and received payments.
                 if (payment instanceof PaymentOperationResponse) {
-                    	if ((actid == false && xlm == true)) {
-                    		assetName = "Lumens(XLM)";
+                    	if ((actID == false && XLM == true)) {
+                    		System.out.println("[XLM] Payment Activities:");
+                    		assetName = "[XLM]";
                     		StringBuilder output = new StringBuilder();
-                    		output.append(actidFrom);
+                    		output.append(actIDFrom);
                     		output.append(" SENT: ");
                     		output.append(amount);
                     		output.append(" ");
                     		output.append(assetName);
                     		output.append(" TO: ");
-                    		output.append(actidTo);
-                    		System.out.println(output.toString() + "\n");
-/*FOR LATER //NonNativeAsset//
-*			StringBuilder assetNameBuilder = new StringBuilder();
-*			assetNameBuilder.append(((AssetTypeCreditAlphaNum) asset).getCode());
-*			assetNameBuilder.append(":");
-*			assetNameBuilder.append(((AssetTypeCreditAlphaNum) asset).getIssuer().getAccountId());
-*			assetName = assetNameBuilder.toString();
-*END FOR LATER //NonNativeAsset//
-*/
+                    		output.append(actIDTo);
+                    		System.out.println(output.toString()+"\n");
                     	}
                     	else {
-                    		assetName = "zZz";
+                    		System.out.println("["+((AssetTypeCreditAlphaNum) asset).getCode()+"] Payment Activities:");
+                			StringBuilder assetNameBuilder = new StringBuilder();
+                			assetNameBuilder.append("["+((AssetTypeCreditAlphaNum) asset).getCode()+"]");
+//                			assetNameBuilder.append(" : ");
+//               			assetNameBuilder.append(((AssetTypeCreditAlphaNum) asset).getIssuer().getAccountId()+")");
+                			assetName = assetNameBuilder.toString();
                     		StringBuilder output = new StringBuilder();
-                    		output.append(actidFrom);
+                    		output.append(actIDFrom);
                     		output.append(" SENT: ");
                     		output.append(amount);
                     		output.append(" ");
                     		output.append(assetName);
                     		output.append(" TO: ");
-                    		output.append(actidTo);
-                    		System.out.println(output.toString());
+                    		output.append(actIDTo);
+                    		System.out.println(output.toString()+"\n");
                     		}
                     	}
                 }
         }
-
     public static void main(String[] args) throws IOException {
 
         Network.useTestNetwork();
         Server server = new Server("https://horizon-testnet.stellar.org");
         
         // Asks user for Account Address
-        System.out.println("\nThis program shows PAYMENTS of an account.");
+        System.out.println("\n~~~ This program shows Balances and Payments in one account ~~~");
         System.out.println("\nENTER THE ACCOUNT ADDRESS TO CHECK: ");
         String input = scanner.nextLine();
 
@@ -114,7 +112,7 @@ public class ReceivePayments {
         try {
         	account = KeyPair.fromAccountId(input);
             TimeUnit.SECONDS.sleep(2); //wait 2 seconds
-        } catch (Exception e) {
+        } catch (InterruptedException e) {
             throw new RuntimeException("Error! Something went wrong!");
         }
         
@@ -125,17 +123,24 @@ public class ReceivePayments {
 
         //2. Load data for the account and get current sequence number
         AccountResponse sourceAccount = server.accounts().account(account);
-
-        
+  
     	//3. Get account balances for source account
-        System.out.println("\nBalances for account: " + account.getAccountId());
+        System.out.println("\n~~~ Displaying Balances for account: " + account.getAccountId()+" ~~~\n");
 	        for (AccountResponse.Balance balance : sourceAccount.getBalances()) {
-	        		System.out.println("\nType: " + balance.getAssetType());
+	        		System.out.println("Type: " + balance.getAssetType());
 	        		System.out.println("Code: " + balance.getAssetCode());
 	        		System.out.println("Limit: " + balance.getLimit());
 	        		System.out.println("Balance: " + balance.getBalance());
       	}
-
+/*	later        
+	    // write to a file the data
+	        String content = (String.format("\nPaging Token is: %s", myToken));
+	        File file = new File("./src/Payments.txt");
+	        FileWriter fw = new FileWriter(file.getAbsoluteFile());
+        try (BufferedWriter bw = new BufferedWriter(fw)) {
+            bw.write(content);
+        }
+*/	System.out.println("\n~~~ Displaying Payment Activities for account: "+ account.getAccountId()+" ~~~\n");        
         // Token work(???)
         String lastToken = loadLastPagingToken();
         
