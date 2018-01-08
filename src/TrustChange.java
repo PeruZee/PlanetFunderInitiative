@@ -24,16 +24,15 @@ public class TrustChange {
 
 		Network.useTestNetwork();
 		Server server = new Server("https://horizon-testnet.stellar.org");
-		
+
 		// Issuing Account Address for Asset: TBC
-		KeyPair  issuingKeys = KeyPair
-				  .fromAccountId("GDZHWATCLKQTIIHEKFJNTJCR234NE6UIZSJKD2VDEPVTJ3ZYZF7CQMZY");
+		KeyPair  issuingKeys = KeyPair.fromAccountId("GDZHWATCLKQTIIHEKFJNTJCR234NE6UIZSJKD2VDEPVTJ3ZYZF7CQMZY");
 
 	    // Asks user for Source account seed
     	System.out.println("\nEnter the source account seed: ");
     	String input = scanner.nextLine();
         KeyPair source;
-        
+
         try {
             	source = KeyPair.fromSecretSeed(input);
             	TimeUnit.SECONDS.sleep(2); //wait 2 seconds
@@ -41,7 +40,7 @@ public class TrustChange {
         catch (Exception e) {
             	throw new RuntimeException("Error! Something went wrong!");
         }
-        
+
         // Asks user for amount of Asset (TBC) to Trust
         try {
         	System.out.println("\nEnter the amount of Asset(TBC) to Trust: ");
@@ -51,10 +50,9 @@ public class TrustChange {
         	throw new RuntimeException("Error! Something went wrong!");
     	}
         	String amount = scanner.nextLine();
-		
+
 		// Represent the Asset
 		Asset TBC = Asset.createNonNativeAsset("TBC", issuingKeys);
-
 
 		// Make the receiving account trust the asset
 		AccountResponse receiving = null;
@@ -64,7 +62,7 @@ public class TrustChange {
 	    catch (Exception e) {
 	        	throw new RuntimeException("Error! Something went wrong!");
 	       	}
-		
+
 		Transaction allowTBC = new Transaction.Builder(receiving)
 		  .addOperation(
 		// ChangeTrust operation creates (or alters) a TrustLine
@@ -72,7 +70,7 @@ public class TrustChange {
 		    new ChangeTrustOperation.Builder(TBC, amount).build())
 		  .build();
 		allowTBC.sign(source);
-		
+
 		// Display Ledger number and Transaction Hash if it was a success
 		try {
 			SubmitTransactionResponse res = server.submitTransaction(allowTBC);
@@ -86,6 +84,7 @@ public class TrustChange {
 	    catch (Exception e) {
         	throw new RuntimeException("\nError! Something went wrong!");
 		}
+
 		// Get account balances for source account
         System.out.println("\nPrevious Balances for account: " + source.getAccountId());
 	        for (AccountResponse.Balance balance : receiving.getBalances()) {
@@ -93,7 +92,6 @@ public class TrustChange {
 	        		System.out.println("Code: " + balance.getAssetCode());
 	        		System.out.println("Limit: " + balance.getLimit());
 	        		System.out.println("Balance: " + balance.getBalance());
-      	}
+	        		}
+	        }
 	}
-	
-}
