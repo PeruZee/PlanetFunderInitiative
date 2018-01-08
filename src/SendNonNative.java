@@ -16,7 +16,7 @@ import org.stellar.sdk.*;
 import org.stellar.sdk.responses.AccountResponse;
 import org.stellar.sdk.responses.SubmitTransactionResponse;
 
-public class SendTBC {
+public class SendNonNative {
 
     private static Scanner scanner = new Scanner( System.in );
 
