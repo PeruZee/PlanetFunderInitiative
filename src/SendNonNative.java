@@ -46,22 +46,22 @@ public class SendNonNative {
         String input2 = scanner.nextLine();
         KeyPair destination;
 
-            try {
+            	try {
                 	destination = KeyPair.fromAccountId(input2);
                 	TimeUnit.SECONDS.sleep(1); //wait 1 second
-            }
-            catch (Exception e) {
+            	}
+            	catch (Exception e) {
                 	throw new RuntimeException("Error! Something went wrong!");
-            }
+            	}
 
         // Asks user for amount of Asset (TBC) to Send
-            try {
+            	try {
             		System.out.println("\nEnter the amount of Asset(TBC) to Send: ");
             		TimeUnit.SECONDS.sleep(1); //wait 1 second
             	}
-            catch (Exception e) {
+		catch (Exception e) {
             		throw new RuntimeException("Error! Something went wrong!");
-            }
+            	}
         	String amount = scanner.nextLine();
 
 		// Represent the Asset
@@ -72,7 +72,7 @@ public class SendNonNative {
 		try {
 			receiving = server.accounts().account(source);
 		}
-	    catch (Exception e) {
+	    	catch (Exception e) {
 	        	throw new RuntimeException("Error! Something went wrong!");
 	       	}
 
@@ -87,23 +87,23 @@ public class SendNonNative {
 			SubmitTransactionResponse res = server.submitTransaction(sendTBC);
 			if (!res.isSuccess() == false) {
 			System.out.println("\nCongrats! It was a success!");
-        	System.out.println("\nLedger Number:\n" + res.getLedger());
-        	System.out.println("Transaction Hash:\n" + res.getHash());
-        	TimeUnit.SECONDS.sleep(1); //wait 1 second
+        		System.out.println("\nLedger Number:\n" + res.getLedger());
+        		System.out.println("Transaction Hash:\n" + res.getHash());
+        		TimeUnit.SECONDS.sleep(1); //wait 1 second
 			}
 		}
-	    catch (Exception e) {
-        	throw new RuntimeException("\nError! Something went wrong!");
+	    	catch (Exception e) {
+        		throw new RuntimeException("\nError! Something went wrong!");
 		}
 
 		// Get previous account balances for source account
-        System.out.println("\nPrevious Balances for account: " + source.getAccountId());
+        	System.out.println("\nPrevious Balances for account: " + source.getAccountId());
 	        for (AccountResponse.Balance balance : receiving.getBalances()) {
 	        		System.out.println("\nType: " + balance.getAssetType());
 	        		System.out.println("Code: " + balance.getAssetCode());
 	        		System.out.println("Limit: " + balance.getLimit());
 	        		System.out.println("Balance: " + balance.getBalance());
-      	}
+      		}
 
 	}
 	
