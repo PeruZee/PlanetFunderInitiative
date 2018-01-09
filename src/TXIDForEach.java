@@ -13,13 +13,13 @@ import java.io.IOException;
 
 public class TXIDForEach {
 	//============Objects============//
-	
+
 	private static HashMap<Integer, String> TXIDList;
 	private static BufferedReader TXID;
 	private static ArrayList<int[]> resultList; //int[] {ItemID, Total}
-	
+
 	//============Methods============//
-	
+
 	//rollDice: rolls the dice, outputs the result of each and returns the total
 	private static int rollDice(int number, int nSides) {
 
@@ -41,13 +41,13 @@ public class TXIDForEach {
 		}
 		return num;
 	}
-	
+
 	//init: initializes the program and any necessary objects
 		private static void init() throws FileNotFoundException, IOException   {
 			resultList = new ArrayList<int[]>();
 			loadList("./src/TXIDList.txt");
 		}
-		
+
 	//loadLists: Loads the list of TXIDs stored in a specific filename
 	private static void loadList(String _filename) throws FileNotFoundException, IOException {
 		TXIDList = new HashMap<Integer, String>();
@@ -63,10 +63,10 @@ public class TXIDForEach {
 		}
 		TXID.close();
 	}
-	
+
 	//performThrows: performs the actual throws and stores IDs and totals in resultList and HASH with SHA256
 	private static int performThrows() {
-		
+
 		int nSize= TXIDList.size();
 		if (nSize >= 10) {
 			//Variables that change based on number of IDs 
@@ -74,7 +74,7 @@ public class TXIDForEach {
 			String unitLine =" TXIDs.";
 			int rollNumber =nSize;
 			int rollSides = nSize;
-			
+
 			//Change previous variables if there's less than 10 ID
 			if(nSize==1 || nSize<=9 ) {
 				quantityLine = "There is: ";  
@@ -82,7 +82,7 @@ public class TXIDForEach {
 				rollNumber =nSize * 10;
 				rollSides = 10;
 			}
-			
+
 			System.out.println("\n" + quantityLine + nSize + unitLine + "\n");
 			for (int item : TXIDList.keySet()) {
 				System.out.println(item + " is: " + TXIDList.get(item) + "." + "\n");
@@ -93,12 +93,12 @@ public class TXIDForEach {
 				resultList.add(new int[]{item, rollTotal});
 			}
 		}
-		
+
 		else {			
 			System.out.println("\n" + "There can't be: " + TXIDList.size() + " TXID!" + "\n");
 			return 1; //Indicating an error
 		}
-		
+
 		return 0;
 	}
 
@@ -118,7 +118,7 @@ public class TXIDForEach {
 				}
 			}
 		}
-		
+
 		for (int i=0; i<resultList.size(); i++)
 		{
 			String _total = Integer.toString(resultList.get(i)[1]);
@@ -128,7 +128,7 @@ public class TXIDForEach {
 			System.out.println("ID: " + _id +", " + "Total: " + _total + " (Hash: " + sha256hex+")");
 		}
 	}
-	
+
 	//ordinal: returns the String ordinal of a number
 	private static String ordinal(int i) {
 	    String[] sufixes = new String[] { "th", "st", "nd", "rd", "th", "th", "th", "th", "th", "th" };
@@ -141,12 +141,12 @@ public class TXIDForEach {
 	        return i + sufixes[i % 10];
 	    }
 	}
-	
+
 	//showResults: shows score order and winners
 	private static void showResults() {
 		sortResultArray();
 		System.out.println();
-		
+
 		int n= resultList.size();
 		int position=1;
 		String line="";
@@ -182,7 +182,7 @@ public class TXIDForEach {
 		if(performThrows() ==1 ) System.exit(1); //perform the throws and if no IDs found, exit
 		System.out.println("\n~~~Showing Results:\n");
 		showResults();
-		
+
 		//Show the list of participants and HASH to SHA256
 		System.out.println("\n~~~Showing list of participants:\n");
 		try (BufferedReader show = new BufferedReader(new FileReader("./src/TXIDList.txt"))) {
