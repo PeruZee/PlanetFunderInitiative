@@ -17,90 +17,88 @@ import org.stellar.sdk.responses.SubmitTransactionResponse;
 
 public class BuildingTransaction {
 
-    private static Scanner scanner = new Scanner( System.in );
-    
+	private static Scanner scanner = new Scanner( System.in );
+
 	public static void main(String[] args) throws IOException {
 
-	Network.useTestNetwork();
-    //Server (TESTNet)
-        Server server = new Server("https://horizon-testnet.stellar.org");
-        
-    //Asks user for Source account seed
-    	System.out.println("\nEnter the source account seed: ");
-    	String input = scanner.nextLine();
-        KeyPair source;
-        
-        try {
-            	source = KeyPair.fromSecretSeed(input);
-            	TimeUnit.SECONDS.sleep(2); //wait 2 seconds
-        }
-        catch (Exception e) {
-            	throw new RuntimeException("Error! Something went wrong!");
-        }
-		
-    //Asks user for destination account address
-	System.out.println("\nEnter the destination account add: ");
-    	String input2 = scanner.nextLine();
-        KeyPair destination;
-    	
-        try {
-            	destination = KeyPair.fromAccountId(input2);
-            	TimeUnit.SECONDS.sleep(2); //wait 2 seconds
-        }
-        catch (Exception e) {
-            	throw new RuntimeException("Error! Something went wrong!");
-        }
+		Network.useTestNetwork();
+		//Server (TESTNet)
+		Server server = new Server("https://horizon-testnet.stellar.org");
 
-    //Asks user for amount of Lumens(XLM) to be sent
-        try {
-        	System.out.println("\nEnter the amount of Lumens(XLM) to send: ");
-        	TimeUnit.SECONDS.sleep(2); //wait 2 seconds
-    	}
-        catch (Exception e) {
-        	throw new RuntimeException("Error! Something went wrong!");
-    	}
-        	String amount = scanner.nextLine();
+		//Asks user for Source account seed
+		System.out.println("\nEnter the source account seed: ");
+		String input = scanner.nextLine();
+		KeyPair source;
 
-	//1. Confirm the account ID exists
-	        server.accounts().account(destination);
+		try {
+			source = KeyPair.fromSecretSeed(input);
+			TimeUnit.SECONDS.sleep(2); //wait 2 seconds
+			}
+		catch (Exception e) {
+			throw new RuntimeException("Error! Something went wrong!");
+			}
 
-	//2. Load data for the account and get current sequence number
-	        AccountResponse sourceAccount = server.accounts().account(source);
+		//Asks user for destination account address
+		System.out.println("\nEnter the destination account add: ");
+		String input2 = scanner.nextLine();
+		KeyPair destination;
 
-	//3. Start building a transaction
-	        Transaction transaction = new Transaction.Builder(sourceAccount)
+		try {
+			destination = KeyPair.fromAccountId(input2);
+			TimeUnit.SECONDS.sleep(2); //wait 2 seconds
+			}
+		catch (Exception e) {
+			throw new RuntimeException("Error! Something went wrong!");
+			}
 
-	//3.1. Add payment operation to account
-	        .addOperation(new PaymentOperation.Builder(destination, new AssetTypeNative(), amount).build())
+		//Asks user for amount of Lumens(XLM) to be sent
+		try {
+			System.out.println("\nEnter the amount of Lumens(XLM) to send: ");
+			TimeUnit.SECONDS.sleep(2); //wait 2 seconds
+			}
+		catch (Exception e) {
+			throw new RuntimeException("Error! Something went wrong!");
+			}
+		String amount = scanner.nextLine();
 
-	//3.2. Add memo to transaction
-	        .addMemo(Memo.text("")) //optional memotext
-	        .build();
+		//1. Confirm the account ID exists
+		server.accounts().account(destination);
 
-	//3.3. Sign the transaction using "source" Seed
-	        transaction.sign(source);
+		//2. Load data for the account and get current sequence number
+		AccountResponse sourceAccount = server.accounts().account(source);
 
-	//4. Send to Stellar network to submit transaction and get Ledger number & Transaction Hash, extras if errors
-	        try {
-	        		SubmitTransactionResponse response = server.submitTransaction(transaction);
-	            	System.out.println("\nSuccess! You sent " + amount + " Lumens(XLM) to: " + destination.getAccountId()+".");
-	            	System.out.println("\nLedger Number:\n" + response.getLedger());
-	            	System.out.println("Transaction Hash:\n" + response.getHash());
-	            	System.out.println("\nExtras: " + response.getExtras());
-	        }
-	        catch (Exception e) {
-	        		System.out.println("\nError! Something went wrong!");
-	        		System.out.println(e.getMessage());
-	        }
-	//5. Get account balances for source account
-	        System.out.println("\nPaging Token: " + sourceAccount.getPagingToken());
-	        System.out.println("Domain for account: " + sourceAccount.getHomeDomain());
-	        System.out.println("Balances for account: " + source.getAccountId());
-		        for (AccountResponse.Balance balance : sourceAccount.getBalances()) {
-		        		System.out.println("\nType: " + balance.getAssetType());
-		        		System.out.println("Code: " + balance.getAssetCode());
-		        		System.out.println("Limit: " + balance.getLimit());
-		        		System.out.println("Balance: " + balance.getBalance());
-	      	}
+		//3. Start building a transaction
+		Transaction transaction = new Transaction.Builder(sourceAccount)
+				//3.1. Add payment operation to account
+				.addOperation(new PaymentOperation.Builder(destination, new AssetTypeNative(), amount).build())
+				//3.2. Add memo to transaction
+				.addMemo(Memo.text("")) //optional memotext
+				.build();
+		//3.3. Sign the transaction using "source" Seed
+		transaction.sign(source);
+
+		//4. Send to Stellar network to submit transaction and get Ledger number & Transaction Hash, extras if errors
+		try {
+			SubmitTransactionResponse response = server.submitTransaction(transaction);
+			System.out.println("\nSuccess! You sent " + amount + " Lumens(XLM) to: " + destination.getAccountId()+".");
+			System.out.println("\nLedger Number:\n" + response.getLedger());
+			System.out.println("Transaction Hash:\n" + response.getHash());
+			System.out.println("\nExtras: " + response.getExtras());
+			}
+		catch (Exception e) {
+			System.out.println("\nError! Something went wrong!");
+			System.out.println(e.getMessage());
+			}
+
+		//5. Get account balances for source account
+		System.out.println("\nPaging Token: " + sourceAccount.getPagingToken());
+		System.out.println("Domain for account: " + sourceAccount.getHomeDomain());
+		System.out.println("Balances for account: " + source.getAccountId());
+		for (AccountResponse.Balance balance : sourceAccount.getBalances()) {
+			System.out.println("\nType: " + balance.getAssetType());
+			System.out.println("Code: " + balance.getAssetCode());
+			System.out.println("Limit: " + balance.getLimit());
+			System.out.println("Balance: " + balance.getBalance());
+			}
+		}
 	}
-}
