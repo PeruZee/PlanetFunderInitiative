@@ -33,6 +33,8 @@ If there are 100 participants, the die will have 100 sides with numbers ranging 
 
 <img src="img/100%20sided%20dice.jpg" class="inline"/>
 
+if you found this useful, please donate to: GBWMELVISCQRMLNTI6LCWBJM52SIPAOAZFIZIDEUBY6ZOIKILO6N5HFZ
+
 
 # TO DO
 
