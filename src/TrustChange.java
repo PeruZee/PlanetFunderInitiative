@@ -85,13 +85,32 @@ public class TrustChange {
         	throw new RuntimeException("\nError! Something went wrong!");
 		}
 
-		// Get account balances for source account
-        System.out.println("\nPrevious Balances for account: " + source.getAccountId());
-	        for (AccountResponse.Balance balance : receiving.getBalances()) {
-	        		System.out.println("\nType: " + balance.getAssetType());
-	        		System.out.println("Code: " + balance.getAssetCode());
-	        		System.out.println("Limit: " + balance.getLimit());
-	        		System.out.println("Balance: " + balance.getBalance());
-	        		}
+		// Asks USER if they want to check account balance and Get account balances for source account
+		System.out.println("\nDo you want to check account balance? Type 1 to check");
+		String balChoice = scanner.nextLine();
+		Integer balCheck = Integer.valueOf(balChoice);
+
+		// Check if account exists and loads account sequence again
+		AccountResponse sourceAccount = server.accounts().account(source);
+
+		// Checks what USER chose and executes code
+			if (balCheck == 1) {
+				try {
+					System.out.println("\n~~~Checking your Account Balance~~~");
+					System.out.println("\nBalances for account: " + source.getAccountId());
+					for (AccountResponse.Balance balance : sourceAccount.getBalances()) {
+						System.out.println("\nType: " + balance.getAssetType());
+						System.out.println("Code: " + balance.getAssetCode());
+						System.out.println("Limit: " + balance.getLimit());
+						System.out.println("Balance: " + balance.getBalance());
+						}
+					}
+				catch (Exception e) {
+					throw new RuntimeException("\nError! Something went wrong!");
+					}
+			}
+			else {
+				System.out.println("\n~~~You chose to not check account balances! Goodbye!~~~");
+				}
 	        }
 	}

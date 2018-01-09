@@ -65,10 +65,10 @@ public class BuildingTransaction {
 		server.accounts().account(destination);
 
 		//2. Load data for the account and get current sequence number
-		AccountResponse sourceAccount = server.accounts().account(source);
+		AccountResponse sender = server.accounts().account(source);
 
 		//3. Start building a transaction
-		Transaction transaction = new Transaction.Builder(sourceAccount)
+		Transaction transaction = new Transaction.Builder(sender)
 				//3.1. Add payment operation to account
 				.addOperation(new PaymentOperation.Builder(destination, new AssetTypeNative(), amount).build())
 				//3.2. Add memo to transaction
@@ -90,15 +90,32 @@ public class BuildingTransaction {
 			System.out.println(e.getMessage());
 			}
 
-		//5. Get account balances for source account
-		System.out.println("\nPaging Token: " + sourceAccount.getPagingToken());
-		System.out.println("Domain for account: " + sourceAccount.getHomeDomain());
-		System.out.println("Balances for account: " + source.getAccountId());
-		for (AccountResponse.Balance balance : sourceAccount.getBalances()) {
-			System.out.println("\nType: " + balance.getAssetType());
-			System.out.println("Code: " + balance.getAssetCode());
-			System.out.println("Limit: " + balance.getLimit());
-			System.out.println("Balance: " + balance.getBalance());
+		//5. Asks USER if they want to check account balance and Get account balances for source account
+		System.out.println("\nDo you want to check account balance? Type 1 to check");
+		String balChoice = scanner.nextLine();
+		Integer balCheck = Integer.valueOf(balChoice);
+
+		//5.1. Check if account exists and loads account sequence again
+		AccountResponse sourceAccount = server.accounts().account(source);
+
+		//5.2 Checks what USER chose and executes code
+			if (balCheck == 1) {
+				try {
+					System.out.println("\n~~~Checking your Account Balance~~~");
+					System.out.println("\nBalances for account: " + source.getAccountId());
+					for (AccountResponse.Balance balance : sourceAccount.getBalances()) {
+						System.out.println("\nType: " + balance.getAssetType());
+						System.out.println("Code: " + balance.getAssetCode());
+						System.out.println("Limit: " + balance.getLimit());
+						System.out.println("Balance: " + balance.getBalance());
+						}
+					}
+				catch (Exception e) {
+					throw new RuntimeException("\nError! Something went wrong!");
+					}
 			}
-		}
+			else {
+				System.out.println("\n~~~You chose to not check account balances! Goodbye!~~~");
+				}
+			}
 	}

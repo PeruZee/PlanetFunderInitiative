@@ -5,7 +5,7 @@
  * This program shows all payment paging tokens of an account and---
  * --asks USER for the account number
  *---shows all payment activities on account.
- * Handles ioexception.
+ * Handles IOException.
  */
 
 import java.io.*;
@@ -121,17 +121,33 @@ public class ReceivePayments {
         
         PaymentsRequestBuilder paymentsRequest = server.payments().forAccount(account);
 
-        //2. Load data for the account and get current sequence number
-        AccountResponse sourceAccount = server.accounts().account(account);
-  
-    	//3. Get account balances for source account
-        System.out.println("\n~~~ Displaying Balances for account: " + account.getAccountId()+" ~~~\n");
-	        for (AccountResponse.Balance balance : sourceAccount.getBalances()) {
-	        		System.out.println("Type: " + balance.getAssetType());
-	        		System.out.println("Code: " + balance.getAssetCode());
-	        		System.out.println("Limit: " + balance.getLimit());
-	        		System.out.println("Balance: " + balance.getBalance());
-      	}
+		//2. Asks USER if they want to check account balance and Get account balances for source account
+		System.out.println("\nDo you want to check account balance? Type 1 to check");
+		String balChoice = scanner.nextLine();
+		Integer balCheck = Integer.valueOf(balChoice);
+
+		//2.1. Check if account exists and loads account sequence again
+		AccountResponse sourceAccount = server.accounts().account(account);
+
+		//2.2. Checks what USER chose and executes code
+			if (balCheck == 1) {
+				try {
+					System.out.println("\n~~~Checking your Account Balance~~~");
+					System.out.println("\nBalances for account: " + account.getAccountId());
+					for (AccountResponse.Balance balance : sourceAccount.getBalances()) {
+						System.out.println("\nType: " + balance.getAssetType());
+						System.out.println("Code: " + balance.getAssetCode());
+						System.out.println("Limit: " + balance.getLimit());
+						System.out.println("Balance: " + balance.getBalance());
+						}
+					}
+				catch (Exception e) {
+					throw new RuntimeException("\nError! Something went wrong!");
+					}
+			}
+			else {
+				System.out.println("\n~~~You chose to not check account balances! Goodbye!~~~");
+				}
 /*	later        
 	    // write to a file the data
 	        String content = (String.format("\nPaging Token is: %s", myToken));
@@ -140,8 +156,10 @@ public class ReceivePayments {
         try (BufferedWriter bw = new BufferedWriter(fw)) {
             bw.write(content);
         }
-*/	System.out.println("\n~~~ Displaying Payment Activities for account: "+ account.getAccountId()+" ~~~\n");        
-        // Token work(???)
+*/
+			System.out.println("\n~~~ Displaying Payment Activities for account: "+ account.getAccountId()+" ~~~\n");        
+
+			// Token work(???)
         String lastToken = loadLastPagingToken();
         
        	try {

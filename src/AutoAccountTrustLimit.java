@@ -50,12 +50,11 @@ public class AutoAccountTrustLimit {
 			}
 
 		// Uses generated seed to commence Trust operation
-		System.out.println("\n~~~Using above Secret Seed to commence Trust Operation~~~");
+		System.out.println("\n~~~Using Secret Seed to Trust Asset~~~");
 		KeyPair source;
 
 		try {
 			source = KeyPair.fromSecretSeed(pair.getSecretSeed());
-			TimeUnit.SECONDS.sleep(1); //wait 1 second
 			}
 		catch (Exception e) {
 			throw new RuntimeException("Error! Something went wrong!");
@@ -78,7 +77,6 @@ public class AutoAccountTrustLimit {
 		AccountResponse receiving = null;
 		try {
 			receiving = server.accounts().account(source);
-			TimeUnit.SECONDS.sleep(1); //wait 1 second
 			}
 		catch (Exception e) {
 			throw new RuntimeException("Error! Something went wrong!");
@@ -89,7 +87,7 @@ public class AutoAccountTrustLimit {
 		// Second parameter limits the amount
 						new ChangeTrustOperation.Builder(TBC, amount).build())
 				.build();
-		//2.2 sign using above source Secret Seed
+		//2.2 sign using source Secret Seed
 		allowTBC.sign(source);
 
 		//3. Display Ledger number and Transaction Hash if it was a success
