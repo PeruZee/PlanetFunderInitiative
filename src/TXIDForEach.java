@@ -172,24 +172,19 @@ public class TXIDForEach {
 	
 	//============Main============// 
 	public static void main(String[] args) throws FileNotFoundException, IOException {
-		
-		System.out.println("\nShowing list of participants:\n");
-		try (BufferedReader show = new BufferedReader(new FileReader("./src/TXIDList.txt"))) {
-			   String line = null;
-			   while ((line = show.readLine()) != null) {
-			       System.out.println(line);
-			   }
-			}
+
 		init(); //initializes the program and any necessary objects
 		if(performThrows() ==1 ) System.exit(1); //perform the throws and if no IDs found, exit
 		showResults();
 		
+		//Show the list of participants and HASH to SHA256
 		System.out.println("\nShowing list of participants:\n");
 		try (BufferedReader show = new BufferedReader(new FileReader("./src/TXIDList.txt"))) {
 			   String line = null;
 			   while ((line = show.readLine()) != null) {
-			       System.out.println(line);
+				   String sha256hex = org.apache.commons.codec.digest.DigestUtils.sha256Hex(line);
+			       System.out.println(line+" <--is--> "+sha256hex);
+			       }
 			   }
-			}
+		}
 	}
-}

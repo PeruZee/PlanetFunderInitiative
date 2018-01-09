@@ -18,7 +18,7 @@ import org.stellar.sdk.responses.SubmitTransactionResponse;
 
 public class SendNonNative {
 
-    private static Scanner scanner = new Scanner( System.in );
+	private static Scanner scanner = new Scanner( System.in );
 
 	public static void main(String[] args) throws IOException {
 
@@ -28,41 +28,41 @@ public class SendNonNative {
 		// Issuing Account Address for Asset: TBC
 		KeyPair  issuingKeys = KeyPair.fromAccountId("GDZHWATCLKQTIIHEKFJNTJCR234NE6UIZSJKD2VDEPVTJ3ZYZF7CQMZY");
 
-	    // Asks user for Sending account seed
-    	System.out.println("\nEnter the Source account Seed: ");
-    	String input = scanner.nextLine();
-        KeyPair source;
+		// Asks user for Sending account seed
+		System.out.println("\nEnter the Source account Seed: ");
+		String input = scanner.nextLine();
+		KeyPair source;
 
-        try {
-        	source = KeyPair.fromSecretSeed(input);
-        	TimeUnit.SECONDS.sleep(1); //wait 1 second
-        	}
-        catch (Exception e) {
-        	throw new RuntimeException("Error! Something went wrong!");
-        	}
+		try {
+			source = KeyPair.fromSecretSeed(input);
+			TimeUnit.SECONDS.sleep(1); //wait 1 second
+			}
+		catch (Exception e) {
+			throw new RuntimeException("Error! Something went wrong!");
+			}
 
-        // Asks user for destination account address
-        System.out.println("\nEnter the destination account: ");
-        String input2 = scanner.nextLine();
-        KeyPair destination;
+		// Asks user for destination account address
+		System.out.println("\nEnter the destination account: ");
+		String input2 = scanner.nextLine();
+		KeyPair destination;
 
-        try {
-        	destination = KeyPair.fromAccountId(input2);
-        	TimeUnit.SECONDS.sleep(1); //wait 1 second
-        	}
-        catch (Exception e) {
-        	throw new RuntimeException("Error! Something went wrong!");
-        	}
+		try {
+			destination = KeyPair.fromAccountId(input2);
+			TimeUnit.SECONDS.sleep(1); //wait 1 second
+			}
+		catch (Exception e) {
+			throw new RuntimeException("Error! Something went wrong!");
+			}
 
-        // Asks user for amount of Asset (TBC) to Send
-        try {
-        	System.out.println("\nEnter the amount of Asset(TBC) to Send: ");
-        	TimeUnit.SECONDS.sleep(1); //wait 1 second
-        	}
-        catch (Exception e) {
-        	throw new RuntimeException("Error! Something went wrong!");
-        	}
-        String amount = scanner.nextLine();
+		// Asks user for amount of Asset (TBC) to Send
+		try {
+			System.out.println("\nEnter the amount of Asset(TBC) to Send: ");
+			TimeUnit.SECONDS.sleep(1); //wait 1 second
+			}
+		catch (Exception e) {
+			throw new RuntimeException("Error! Something went wrong!");
+			}
+		String amount = scanner.nextLine();
 
 		// Represent the Asset
 		Asset TBC = Asset.createNonNativeAsset("TBC", issuingKeys);
