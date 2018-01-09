@@ -67,19 +67,11 @@ If there are 100 participants, the die will have 100 sides with numbers ranging 
 
 # Output Images:
 
-**A 14 Sided Dice roll example & results (14d14):** 
+**A 12 Sided Dice roll game example (12d12):** 
 
-<img src="img/PlanetFunderOP.png" class="inline"/>
+<img src="img/HashedTXIDForEach.png" class="inline"/>
 
-**266 Sided Dice roll result by ID (266d266):**
-
-<img src="img/266d266.png" class="inline"/>
-
-**[Participant number 245]: Total of all rolls is 36077, on a 266 sided dice by rolling the dice 266 times (266d266):**
-
-<img src="img/266d266_245.png" class="inline"/>
-
-Step by Step, even The Mount Everest is climbable. 
+**Step by Step, even The Mount Everest is climbable. 
 
 **MONTHLY: We will donate 5% of every lottery to The Ocean Cleanup project for the first 12 months, users will be able to decide it later when they hold our tokens.**
 
