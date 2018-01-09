@@ -33,7 +33,7 @@ If there are 100 participants, the die will have 100 sides with numbers ranging 
 
 <img src="img/100%20sided%20dice.jpg" class="inline"/>
 
-if you found this useful, please donate to: GBWMELVISCQRMLNTI6LCWBJM52SIPAOAZFIZIDEUBY6ZOIKILO6N5HFZ
+**If you found this useful, please donate to: GBWMELVISCQRMLNTI6LCWBJM52SIPAOAZFIZIDEUBY6ZOIKILO6N5HFZ**
 
 
 # TO DO
@@ -76,5 +76,7 @@ if you found this useful, please donate to: GBWMELVISCQRMLNTI6LCWBJM52SIPAOAZFIZ
 **Step by Step, even The Mount Everest is climbable.**
 
 **MONTHLY: We will donate 5% of every lottery to The Ocean Cleanup project for the first 12 months, users will be able to decide it later when they hold our tokens.**
+
+**If you found this useful, please donate to: GBWMELVISCQRMLNTI6LCWBJM52SIPAOAZFIZIDEUBY6ZOIKILO6N5HFZ**
 
 **Licensed under the Eclipse Public License 1.0**
