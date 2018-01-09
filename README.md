@@ -65,7 +65,7 @@ If there are 100 participants, the die will have 100 sides with numbers ranging 
 
 #**Facebook:** <a href="https://www.facebook.com/PlanetFunderInitiative/">Project Facebook</a>
 
-# Output Images:
+# Output Example:
 
 **A 12 Sided Dice roll game example (12d12):** 
 
