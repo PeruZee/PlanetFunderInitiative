@@ -64,7 +64,7 @@ public class TXIDForEach {
 		TXID.close();
 	}
 	
-	//performThrows: performs the actual throws and stores IDs and totals in resultList
+	//performThrows: performs the actual throws and stores IDs and totals in resultList and HASH with SHA256
 	private static int performThrows() {
 		
 		int nSize= TXIDList.size();
@@ -87,7 +87,9 @@ public class TXIDForEach {
 			for (int item : TXIDList.keySet()) {
 				System.out.println(item + " is: " + TXIDList.get(item) + "." + "\n");
 				int rollTotal = rollDice(rollNumber, rollSides);
-				System.out.println("\n" + "Total of all rolls for " + TXIDList.get(item) + " is: "+ rollTotal + "\n");
+				String sha256hex = org.apache.commons.codec.digest.DigestUtils.sha256Hex(Integer.toString(rollTotal));
+				System.out.println("\n"+"~~~Total of all rolls for "+ TXIDList.get(item)+"is: "+rollTotal);
+				System.out.println("~~~HASH for Total Roll of "+rollTotal+": "+ sha256hex+"\n");
 				resultList.add(new int[]{item, rollTotal});
 			}
 		}
@@ -100,7 +102,7 @@ public class TXIDForEach {
 		return 0;
 	}
 
-	//sortResultArray: sorts result array with the bubble sort algorithm 
+	//sortResultArray: sorts result array with the bubble sort algorithm and HASH with SHA256
 	private static void sortResultArray() {
 		//sort with the bubble sort algorithm
 		int n=resultList.size();
@@ -121,8 +123,9 @@ public class TXIDForEach {
 		{
 			String _total = Integer.toString(resultList.get(i)[1]);
 			String _id = Integer.toString(resultList.get(i)[0]);
-	
-			System.out.println("ID: " + _id +", " + "Total: " +_total);
+
+			String sha256hex = org.apache.commons.codec.digest.DigestUtils.sha256Hex(_total);
+			System.out.println("ID: " + _id +", " + "Total: " + _total + " (Hash: " + sha256hex+")");
 		}
 	}
 	
@@ -147,6 +150,7 @@ public class TXIDForEach {
 		int n= resultList.size();
 		int position=1;
 		String line="";
+		System.out.println("~~~Showing Placement(Place: ID):\n");
 		for(int i=0; i<n; i++)
 		{
 			line += ordinal(position)+ " place: ";
@@ -162,6 +166,7 @@ public class TXIDForEach {
 					break;
 				j++;
 			}
+
 			i= j-1;
 			System.out.println(line);
 			line="";
@@ -169,16 +174,17 @@ public class TXIDForEach {
 		}
 		
 	}
-	
+
 	//============Main============// 
 	public static void main(String[] args) throws FileNotFoundException, IOException {
 
 		init(); //initializes the program and any necessary objects
 		if(performThrows() ==1 ) System.exit(1); //perform the throws and if no IDs found, exit
+		System.out.println("\n~~~Showing Results:\n");
 		showResults();
 		
 		//Show the list of participants and HASH to SHA256
-		System.out.println("\nShowing list of participants:\n");
+		System.out.println("\n~~~Showing list of participants:\n");
 		try (BufferedReader show = new BufferedReader(new FileReader("./src/TXIDList.txt"))) {
 			   String line = null;
 			   while ((line = show.readLine()) != null) {
