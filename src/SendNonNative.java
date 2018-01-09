@@ -1,6 +1,6 @@
 /*
  * Original: Stellar
- * Modified: Pruz (07.01.2018)
+ * Code: Pruz
  * Reference Libs: stellar-sdk.jar
  * This program Allows NonNativeAsset to be sent
  * Prompts user for their account seed and destination account
@@ -33,12 +33,12 @@ public class SendNonNative {
     	String input = scanner.nextLine();
         KeyPair source;
 
-        	try {
-            		source = KeyPair.fromSecretSeed(input);
-            		TimeUnit.SECONDS.sleep(1); //wait 1 second
+        try {
+        	source = KeyPair.fromSecretSeed(input);
+        	TimeUnit.SECONDS.sleep(1); //wait 1 second
         	}
-        	catch (Exception e) {
-            		throw new RuntimeException("Error! Something went wrong!");
+        catch (Exception e) {
+        	throw new RuntimeException("Error! Something went wrong!");
         	}
 
         // Asks user for destination account address
@@ -46,65 +46,63 @@ public class SendNonNative {
         String input2 = scanner.nextLine();
         KeyPair destination;
 
-            	try {
-                	destination = KeyPair.fromAccountId(input2);
-                	TimeUnit.SECONDS.sleep(1); //wait 1 second
-            	}
-            	catch (Exception e) {
-                	throw new RuntimeException("Error! Something went wrong!");
-            	}
+        try {
+        	destination = KeyPair.fromAccountId(input2);
+        	TimeUnit.SECONDS.sleep(1); //wait 1 second
+        	}
+        catch (Exception e) {
+        	throw new RuntimeException("Error! Something went wrong!");
+        	}
 
         // Asks user for amount of Asset (TBC) to Send
-            	try {
-            		System.out.println("\nEnter the amount of Asset(TBC) to Send: ");
-            		TimeUnit.SECONDS.sleep(1); //wait 1 second
-            	}
-		catch (Exception e) {
-            		throw new RuntimeException("Error! Something went wrong!");
-            	}
-        	String amount = scanner.nextLine();
+        try {
+        	System.out.println("\nEnter the amount of Asset(TBC) to Send: ");
+        	TimeUnit.SECONDS.sleep(1); //wait 1 second
+        	}
+        catch (Exception e) {
+        	throw new RuntimeException("Error! Something went wrong!");
+        	}
+        String amount = scanner.nextLine();
 
 		// Represent the Asset
 		Asset TBC = Asset.createNonNativeAsset("TBC", issuingKeys);
 
-		// Make the receiving account trust the asset
+		// Load the source account
 		AccountResponse receiving = null;
 		try {
 			receiving = server.accounts().account(source);
-		}
-	    	catch (Exception e) {
-	        	throw new RuntimeException("Error! Something went wrong!");
-	       	}
+			}
+		catch (Exception e) {
+			throw new RuntimeException("Error! Something went wrong!");
+			}
 
 		// Send Transaction to Stellar Network
 		Transaction sendTBC = new Transaction.Builder(receiving)
-          .addOperation(new PaymentOperation.Builder(destination, TBC, amount).build())
-		  .build();
+				.addOperation(new PaymentOperation.Builder(destination, TBC, amount).build())
+				.build();
 		sendTBC.sign(source);
 
 		// Display Ledger number and Transaction Hash if it was a success
 		try {
 			SubmitTransactionResponse res = server.submitTransaction(sendTBC);
 			if (!res.isSuccess() == false) {
-			System.out.println("\nCongrats! It was a success!");
-        		System.out.println("\nLedger Number:\n" + res.getLedger());
-        		System.out.println("Transaction Hash:\n" + res.getHash());
-        		TimeUnit.SECONDS.sleep(1); //wait 1 second
+				System.out.println("\nCongrats! It was a success!");
+				System.out.println("\nLedger Number:\n" + res.getLedger());
+				System.out.println("Transaction Hash:\n" + res.getHash());
+				TimeUnit.SECONDS.sleep(1); //wait 1 second
+				}
 			}
-		}
-	    	catch (Exception e) {
-        		throw new RuntimeException("\nError! Something went wrong!");
-		}
+		catch (Exception e) {
+			throw new RuntimeException("\nError! Something went wrong!");
+			}
 
 		// Get previous account balances for source account
-        	System.out.println("\nPrevious Balances for account: " + source.getAccountId());
-	        for (AccountResponse.Balance balance : receiving.getBalances()) {
-	        		System.out.println("\nType: " + balance.getAssetType());
-	        		System.out.println("Code: " + balance.getAssetCode());
-	        		System.out.println("Limit: " + balance.getLimit());
-	        		System.out.println("Balance: " + balance.getBalance());
-      		}
-
+		System.out.println("\nPrevious Balances for account: " + source.getAccountId());
+		for (AccountResponse.Balance balance : receiving.getBalances()) {
+			System.out.println("\nType: " + balance.getAssetType());
+			System.out.println("Code: " + balance.getAssetCode());
+			System.out.println("Limit: " + balance.getLimit());
+			System.out.println("Balance: " + balance.getBalance());
+			}
+		}
 	}
-	
-}
