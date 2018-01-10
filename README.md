@@ -31,7 +31,7 @@ If there are 100 participants, the die will have 100 sides with numbers ranging 
 
 **2x100-Sided Dice: 2d100**
 
-<img src="/img/100%20sided%20dice.jpg" class="inline"/>
+<img src="https://github.com/PeruZee/PlanetFunderInitiative/blob/master/img/100%20sided%20dice.jpg" class="inline"/>
 
 **If you found this useful, please donate to: GBWMELVISCQRMLNTI6LCWBJM52SIPAOAZFIZIDEUBY6ZOIKILO6N5HFZ**
 
@@ -71,7 +71,7 @@ If there are 100 participants, the die will have 100 sides with numbers ranging 
 
 **A 12 Sided Dice roll game example (12d12):** 
 
-<img src="/img/HashedTXIDForEach.png" class="inline"/>
+<img src="https://github.com/PeruZee/PlanetFunderInitiative/blob/master/img/HashedTXIDForEach.png" class="inline"/>
 
 **Step by Step, even The Mount Everest is climbable.**
 
