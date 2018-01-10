@@ -120,42 +120,69 @@ public class TXIDForEach {
 				}
 			}
 		}
-
+//hashing
 		for (int i=0; i<resultList.size(); i++)
 		{
 			String _id = Integer.toString(resultList.get(i)[0]); //String _idtoString = _id;
 			String _total = Integer.toString(resultList.get(i)[1]); //String _totaltoString = _total;
 
+			//append id before total
 			String _id_total = (_id+_total);
+			
+			//append id before idtotal before total
 			String unQString = (_id+_id_total+_total);
 			
-
+			//idtoSHA256: sha256Hex of id
 			String _idtoSHA256 = org.apache.commons.codec.digest.DigestUtils.sha256Hex(_id);
+			
+			//totaltoSha256: sha256Hex of total
 			String _totaltoSHA256 = org.apache.commons.codec.digest.DigestUtils.sha256Hex(_total);
+			
+			//stoHash1: appended _id_total's Sha256Hex
 			String stoHash1 = org.apache.commons.codec.digest.DigestUtils.sha256Hex(_id_total);
 
-//			String stoHash2 = org.apache.commons.codec.digest.DigestUtils.sha256Hex(unQString); //future complexity implementation
-			
+/*
+ * future complexity implementation
+ * 			String stoHash2 = org.apache.commons.codec.digest.DigestUtils.sha256Hex(unQString);
+ *
+ */			
+			//append id before stoHash1(appended _id_total's Sha256Hex) before total
 			String hString1 = (_id+stoHash1+_total);
+			//append idtoSHA256 before unQString(appended id before idtotal before total) before totaltoSHA256
 			String hString2 = (_idtoSHA256+unQString+_totaltoSHA256);
-//			String hStringZ = (hString1+stoHash2+hString2); //future complexity implementation
+/*			
+ * future complexity implementation
+ * 		String hStringZ = (hString1+stoHash2+hString2);
+ */
+
+			//sha256hex of hstring1: appended id before stoHash1(appended _id_total's Sha256Hex) before total
+			String hS1toSHA256 = org.apache.commons.codec.digest.DigestUtils.sha256Hex(hString1);
 			
-			String hS1toSHA256 = org.apache.commons.codec.digest.DigestUtils.sha256Hex(hString1); //use this
-			String hS2toSHA256 = org.apache.commons.codec.digest.DigestUtils.sha256Hex(hString2); //use this no 3
-			String hStoSHA256 = org.apache.commons.codec.digest.DigestUtils.sha256Hex(hString1+hString2); //use this no 4
+			//sha256 of hstring2: appended idtoSHA256 before unQString(appended id before idtotal before total) before totaltoSHA256
+			String hS2toSHA256 = org.apache.commons.codec.digest.DigestUtils.sha256Hex(hString2); 
 			
-//			String dblh1SHA256 = org.apache.commons.codec.digest.DigestUtils.sha256Hex(hS1toSHA256); //future complexity implementation
-//			String dblh2SHA256 = org.apache.commons.codec.digest.DigestUtils.sha256Hex(hS2toSHA256); //future complexity implementation
-//			String hString3 = (dblh1SHA256+dblh2SHA256); //future complexity implementation
+			//sha256hex of hString1 appended before hString2
+			String hStoSHA256 = org.apache.commons.codec.digest.DigestUtils.sha256Hex(hString1+hString2); 
 			
+/*
+//future complexity implementation
+ * 		String dblh1SHA256 = org.apache.commons.codec.digest.DigestUtils.sha256Hex(hS1toSHA256);
+ * 		String dblh2SHA256 = org.apache.commons.codec.digest.DigestUtils.sha256Hex(hS2toSHA256);
+ * 		String hString3 = (dblh1SHA256+dblh2SHA256);
+ *  //future complexity implementation
+ */			
 			String hString3 = (hS1toSHA256+hS2toSHA256);
 			
 			String hashFinal = org.apache.commons.codec.digest.DigestUtils.sha256Hex(hString3);
 			
-			System.out.println("ID: \n("+_id+", " + "Total: " + _total+".)");
+			System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+			
+			System.out.println("ID: ("+_id+", " + "Total: " + _total+".)");
 
 			System.out.println("~~~Commencing HASHING:~~~");
+			//append id before total
 			System.out.println("\nFirst Unique String: "+_id_total+".");
+			//append id before idtotal before total
 			System.out.println("Second Unique String: "+unQString+".");
 			
 			System.out.println("\nFirst Unique HashString: "+hString1+".");
@@ -163,11 +190,12 @@ public class TXIDForEach {
 			
 			System.out.println("\nhS1toSHA256: "+hS1toSHA256+".");
 			System.out.println("hS2toSHA256: "+hS2toSHA256+".");
-			System.out.println("hStoSHA256: "+hStoSHA256+".");
+			System.out.println("hStoSHA256: "+hStoSHA256+".\nhString1: "+(hString1+"\nhString2: "+hString2));
 			
 			System.out.println("\nThird Unique HashString: "+hString3+".");
 			
-			System.out.println("\nFinal Hash before final append: "+hashFinal+".");
+			System.out.println("\nFinal Hash before final append: "+hashFinal+".\n");
+			
 			
 			try (BufferedReader show = new BufferedReader(new FileReader("./src/TXIDList.txt"))) {
 				   String line = null;
@@ -175,7 +203,10 @@ public class TXIDForEach {
 					   String hashZ1 = (line+hashFinal);
 					   String hashZ2 = org.apache.commons.codec.digest.DigestUtils.sha256Hex(hashZ1);
 					   String hashZFinal = org.apache.commons.codec.digest.DigestUtils.sha256Hex(hashZ2);
-				       System.out.println(line+"'s Unique HASH is----> "+hashZFinal);
+					   System.out.println("\nFinal String after final append with TXID (hashZ1): "+hashZ1+".\n");
+					   System.out.println("hashZ2: "+line+"'s Final String's First Unique HASH is----> "+hashZ2+"\n");
+					   System.out.println("\n\nTXID: "+line+"'s Second  and Final Unique HASH is----> "+hashZFinal+"\n");
+					   System.out.println("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 				       }
 				   } catch (FileNotFoundException e) {
 					// TODO Auto-generated catch block
@@ -184,6 +215,8 @@ public class TXIDForEach {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+			
+			
 			System.out.println("\n~~~END HASHING, ENJOY!~~~\n");
 /*
  * 			String hashZ1 = (line+hashFinal);
