@@ -1,6 +1,8 @@
 # WHO WE ARE 
 
-The fastest, most secure blockchain tech-based gaming system. Both transparent and charitable. We are developing 20 gaming products based on Stellar Blockchain Technology.
+The fastest, most secure blockchain tech-based gaming system. Both transparent and charitable. We are developing 20 gaming products based on Stellar Blockchain Technology. 
+
+**Save your Wallet, Save the Planet!**
 
 # NEWS
 
