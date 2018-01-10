@@ -164,9 +164,9 @@ public class HashBuilder {
 					   System.out.println("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 				       }
 				   } catch (FileNotFoundException e) {
-						throw new RuntimeException("Error! Something went wrong!");
+						throw new RuntimeException("Error! File not found! Make sure there the filepath is correct!");
 				} catch (IOException e) {
-					throw new RuntimeException("Error! Something went wrong!");
+					throw new RuntimeException("Error! Something went wrong! Please try again!");
 				}
 			System.out.println("\n~~~END HASHING, ENJOY!~~~\n");
 		}
