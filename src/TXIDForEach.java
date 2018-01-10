@@ -3,13 +3,13 @@
  *
  */
 
-import java.util.Random;
 import java.util.*;
 import java.util.HashMap;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.security.SecureRandom;
 
 public class TXIDForEach {
 	//============Objects============//
@@ -25,7 +25,7 @@ public class TXIDForEach {
 
 		int num = 0;
 		int roll = 0;
-		Random  r = new Random();
+		Random  r = new SecureRandom();
 		if (nSides >=10) {
 
 			for (int i = 0; i < number; i++) {
