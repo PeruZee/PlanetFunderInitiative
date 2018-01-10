@@ -31,7 +31,7 @@ If there are 100 participants, the die will have 100 sides with numbers ranging 
 
 **2x100-Sided Dice: 2d100**
 
-<img src="https://github.com/PeruZee/PlanetFunderInitiative/blob/master/img/100%20sided%20dice.jpg" />
+<img src="/img/100%20sided%20dice.jpg" />
 
 **If you found this useful, please donate to: GBWMELVISCQRMLNTI6LCWBJM52SIPAOAZFIZIDEUBY6ZOIKILO6N5HFZ**
 
