@@ -73,7 +73,7 @@ If there are 100 participants, the die will have 100 sides with numbers ranging 
 
 **A 12 Sided Dice roll game example (12d12):** 
 
-<img src="img/HashedTXIDForEach.png" class="inline"/>
+<img src="img/hashto256bingo.png" class="inline"/>
 
 **Step by Step, even The Mount Everest is climbable.**
 
