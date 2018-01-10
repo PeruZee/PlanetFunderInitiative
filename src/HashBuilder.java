@@ -52,8 +52,7 @@ public class HashBuilder {
 	        TXIDList.put(i, line);
 	        i++;
 	    }
-	    TXID.close();
-		//resultList = new ArrayList<int[]>();	    
+	    TXID.close();    
 
 		if (TXIDList.size() > 1) {
 			
