@@ -1,7 +1,7 @@
 /*
  * Original: Pruz (10.01.2018)
  * This programs prompts USER for string=_id and string=_total 
- * and also loads TXIDList from ./src/TXIDLISTOne.tct
+ * and also loads TXIDList from ./src/TXIDLISTOne.txt
  * Builds an Unique Secure Hash using the 2 USER Inputs and their TXID
  * Handles ioexception
  */
