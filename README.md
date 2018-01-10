@@ -1,6 +1,6 @@
 # WHO WE ARE 
 
-A Blockchain-ledger based transparent and charitable gaming platform. We will develop 20 gaming products based on Stellar blockchain ledger.
+The fastest and most cryptographically Secure Provably Fair Blockchain-ledger based transparent and charitable gaming platform. We will develop 20 gaming products based on Stellar blockchain ledger.
 
 # NEWS
 
