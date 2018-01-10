@@ -120,7 +120,7 @@ public class TXIDForEach {
 				}
 			}
 		}
-//hashing
+//start hashing below
 		for (int i=0; i<resultList.size(); i++)
 		{
 			String _id = Integer.toString(resultList.get(i)[0]); //String _idtoString = _id;
@@ -174,7 +174,7 @@ public class TXIDForEach {
 			String hString3 = (hS1toSHA256+hS2toSHA256);
 			
 			String hashFinal = org.apache.commons.codec.digest.DigestUtils.sha256Hex(hString3);
-			
+//end hashing below			
 			System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 			
 			System.out.println("ID: ("+_id+", " + "Total: " + _total+".)");
