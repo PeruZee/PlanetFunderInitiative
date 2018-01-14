@@ -71,7 +71,7 @@ If there are 100 participants, the die will have 100 sides with numbers ranging 
 
 # Output Example:
 
-**A 12 Sided Dice roll game example (12d12):** 
+**Basic 12 Sided Dice game with Unique Hash implemented (12d12):** 
 <img src="img/Hashed.png" class="inline"/>
 
 **Step by Step, even The Mount Everest is climbable.**
