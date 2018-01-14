@@ -59,7 +59,7 @@ public final class Hash implements IObserver{
 		//5. idtoSHA256: sha256Hex of id
 		String _idtoSHA256 = sha256Hex(_id);
 		
-		//6. totaltoSha256: sha256Hex of total
+		//6. totaltoSha512: sha512Hex of total
 		String _totaltoSHA512 = sha512Hex(_total);
 		
 		//7. stoHash1: appended _id_total's Sha256Hex
@@ -68,14 +68,14 @@ public final class Hash implements IObserver{
 		
 		//8. append id before stoHash1(appended _id_total's Sha256Hex) before total
 		String hString1 = (_id+stoHash1+_total);
-		//9. append idtoSHA256 before unQString(appended id before idtotal before total) before totaltoSHA256
+		//9. append idtoSHA256 before unQString(appended id before idtotal before total) before totaltoSHA512
 		String hString2 = (_idtoSHA256+unQString+_totaltoSHA512);
 		
 		
 		//10. sha256hex of hstring1: appended id before stoHash1(appended _id_total's Sha256Hex) before total
 		String hS1toSHA256 = sha256Hex(hString1);
 		
-		//11. sha256 of hstring2: appended idtoSHA256 before unQString(appended id before idtotal before total) before totaltoSHA256
+		//11. sha512 of hstring2: appended idtoSHA256 before unQString(appended id before idtotal before total) before totaltoSHA512
 		String hS2toSHA512 = sha512Hex(hString2); 
 		
 		//12. sha256hex of hString1 appended before hString2
