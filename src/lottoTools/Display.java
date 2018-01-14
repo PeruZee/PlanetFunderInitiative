@@ -80,7 +80,7 @@ public final class Display implements IObserver
 			String sha256hex = Lotto.Hash.sha256Hex(Double.toString(rollTotal));
 			System.out.println("\n"+"~~~Total of all rolls for "+ id+" is: "+rollTotal);
 			System.out.println("~~~HASH for Total Roll of "+rollTotal+": "+ sha256hex);
-			System.out.println("TXID: "+TXID+"'s FINAL OUTPUT >>SHA256Hex<< HASH is----> "+hash+".\n");
+			System.out.println("~~~FINAL >>SHA256Hex<< HASH is:----> "+hash+".\n");
 			
 			
 		}
