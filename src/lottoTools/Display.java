@@ -20,7 +20,7 @@ public final class Display implements IObserver
 	{
 		if(obj instanceof Session) 
 		{
-			if(args == "dispalyTXIDNum") 
+			if(args == "displayTXIDNum") 
 			{
 				int nSize= (int) param;
 				_displayTXIDNum(nSize);
