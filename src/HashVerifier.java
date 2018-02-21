@@ -1,9 +1,11 @@
 /*
  * Basic program.
  *--Verify the Hash:
- *--Loads organization Hash from ./src/TXIDListOne.txt
- *--Displays Unique Secure Hash using the 2 USER Inputs and the organization Hash
- *--Saves a Screenshot to ./out/ss/<HASH>.png
+ *--Loads and Checks if there is Master HashKey in ./src/TXIDListOne.txt
+ *--Generates Random Hash from current Date and Time or
+ *--Displays Unique Hash using the 2 USER Inputs
+ *--Saves a Screenshot to ./out/ss/<HASH>.gif or
+ *--If image exists, saves a Screenshot to ./out/ss/checked/<HASH>.gif
  *--Handles Exception errors.
  */
 import java.awt.AWTException;
@@ -30,56 +32,73 @@ import javax.imageio.ImageIO;
  *
  */
 public class HashVerifier {
-	
+
 	int salt;
-	
+
 	public HashVerifier() {
 		salt = 0;
 	}
-	
+
 	final int Salt() throws NoSuchAlgorithmException {
-	SecureRandom random = SecureRandom.getInstance("SHA1PRNG");
-	salt = random.nextInt(9000000) + 1000000;
-	return salt;
+		SecureRandom random = SecureRandom.getInstance("SHA1PRNG");
+		salt = random.nextInt(9000000) + 1000000;
+		return salt;
 	}
-	
-	public static String sha256(String args) {
+
+	protected static String sha256(String args) {
 		String hash = org.apache.commons.codec.digest.DigestUtils.sha256Hex(args);
 		return hash;
 	}
-	public static String sha512(String args) {
+
+	protected static String sha512(String args) {
 		String hash = org.apache.commons.codec.digest.DigestUtils.sha512Hex(args);
 		return hash;
 	}
-	
-	private static Scanner scanner = new Scanner( System.in );
 
-	
+	private static Scanner scanner = new Scanner(System.in);
+
 	public static void main(String[] args) throws IOException, NoSuchAlgorithmException {
 
+		System.out.println("~~~~This Program Allows You to Verify the HASH.");
+		System.out.println("~~~~Enter The Date and The Time below.");
+		System.out.println("~~~~Example Date: mmddyyyy like 02062018 for 02.06.2018");
+		System.out.println("~~~~Example Time: hhmmss like 120101 for 12:01:01 PM");
+		// Instantiate a Date object
+		// Create variables for current date and time
+		Date date = new Date();
+		String dMonth = String.format("%tm", date);
+		String dDay = String.format("%td", date);
+		String dYear = String.format("%tY", date);
+		String dHour = String.format("%tH", date);
+		String dMinute = String.format("%tM", date);
+		String dSecond = String.format("%tS", date);
+		// display date and time using toString()
+		System.out.println("\nCurrent Date and Time: " + date.toString());
+		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+
+		boolean dicer;
+
+		// Set dicer to true or false
+		System.out.println("\nAuto Generate? Type 'true' or 'false'.");
+		String input = String.valueOf(scanner.nextLine());
+		String input1 = null;
+		String input2 = null;
+		dicer = Boolean.valueOf(input);
+
 		try {
-			System.out.println("~~~~This Program Allows You to Verify the HASH.");
-			System.out.println("~~~~Enter The Date and The Time below.");
-			System.out.println("~~~~Example Date: mmddyyyy like 02062018 for 02.06.2018");
-			System.out.println("~~~~Example Time: hhmmss like 120101 for 12:01:01 PM");
-			TimeUnit.SECONDS.sleep(1); //wait 1 second
-			// Instantiate a Date object
-			Date date = new Date();
-			// display time and date using toString()
-			System.out.println("\nCurrent Date and Time: "+date.toString());
-			System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-		}
-		catch (Exception e) {
+			// ask for date and time if dicer is false
+			if (dicer != true) {
+				// Asks USER for Date
+				System.out.println("\nEnter the Date: ");
+				input1 = String.valueOf(scanner.nextLine());
+				TimeUnit.SECONDS.sleep(1); // wait 1 second
+				// Asks USER for Time
+				System.out.println("\nEnter the Time: ");
+				input2 = String.valueOf(scanner.nextLine());
+			}
+		} catch (Exception e) {
 			throw new RuntimeException("Error! Something went wrong!");
 		}
-
-		// Asks USER for first input
-		System.out.println("\nEnter the Date: ");
-		String input1 = String.valueOf(scanner.nextLine());
-
-		// Asks USER for second input
-		System.out.println("\nEnter the Time: ");
-		String input2 = String.valueOf(scanner.nextLine());
 
 		// Asks USER for third input
 		System.out.println("\nEnter the Hash to verify: ");
@@ -87,10 +106,10 @@ public class HashVerifier {
 
 		HashMap<Integer, String> TXIDList = new HashMap<Integer, String>();
 
-		BufferedReader TXID = new BufferedReader( new FileReader ("./src/TXIDListOne.txt"));
+		BufferedReader TXID = new BufferedReader(new FileReader("./src/TXIDListOne.txt"));
 		String line = ":";
-		int i = 1; //start from i = 1 
 
+		int i = 1; // start from i = 1 instead of i = 0
 		while ((line = TXID.readLine()) != null) {
 			TXIDList.put(i, line);
 			i++;
@@ -99,76 +118,79 @@ public class HashVerifier {
 
 		if (TXIDList.size() != 1) {
 			System.out.println("\n" + "There can't be: " + TXIDList.size() + " TXID!" + "\n");
-		}
+		} else if (TXIDList.size() == 1) {
+			// 1. String uDatetoString = uDate;
+			// String uDate = input1;
+			// 2. String uTimetoString = uTime;
+			// String uTime = input2;
+			// 3. append id before total
+			// String uDateuTime = (uDate + uTime);
+			// 3abc: for randomization implementations
 
-		for (int k=0; k<TXIDList.size(); k++) {
-			//1. String _idtoString = _id;
-			String _id = input1;
-			//2. String _totaltoString = _total;
-			String _total = input2;
-			//3. append id before total
-			String _id_total = (_id+_total);
-
-			//3abc: for randomization implementations
-			boolean dicer;
-			// Asks USER for fourth input
-			//Set dicer to true or false
-			//if dicer is true, use salt method for Random Hash Generation
-			//if dicer is false, use append method for Fixed Hash Generation
-			//dicer = false;
-			System.out.println("\nDicer true or false? Type 'true' or 'false'.");
-			String input4 = String.valueOf(scanner.nextLine());
-			dicer = Boolean.valueOf(input4);
+			String uDate = null;
+			String uTime = null;
+			String uDT = null;
 			String unQ = null;
-			if (dicer!= false) {
-				//3a. use SecureRandom to create salt
+			// if dicer is true, use salt method for Random Hash Generation
+			// if dicer is false, use append method for Fixed Hash Generation
+			if (dicer != false) {
+				// 3a. use SecureRandom to create salt
 				HashVerifier mySalt = new HashVerifier();
 				int dSalt = mySalt.Salt();
-				
-				//3b. append id before salt before total
-				unQ = (_id+String.valueOf(dSalt)+_total);
-				System.out.println("\nSalt: "+(dSalt)+".");
-				System.out.println("Unique String: "+unQ+".\n");
+
+				// 3b. append id before salt before total
+				uDate = (dMonth + dDay + dYear);
+				uTime = (dHour + dMinute + dSecond);
+				uDT = (uDate + uTime);
+				unQ = (uDate + String.valueOf(dSalt) + uTime);
+				System.out.println("\nSalt: " + dSalt + ".");
+				System.out.println("Unique String: " + unQ + ".\n");
+			} else {
+				uDate = input1;
+				uTime = input2;
+				uDT = (uDate + uTime);
+
+				// 3c. append id before uDateuTime before total
+				unQ = (uDate + uDT + uTime);
+				System.out.println("\nUnique String: " + unQ + ".\n");
 			}
-			else {
-				//3c. append id before _id_total before total
-				unQ = (_id+_id_total+_total);
-			}
-			//4. 3b or 3c
+			// 4. 3b or 3c
 			String unQString = (unQ);
 
-			//5. idtoSHA256: sha256Hex of id
-			String _idtoSHA256 = sha256(_id);
-			//6. totaltoSha256: sha256Hex of total
-			String _totaltoSHA512 = sha512(_total);
-			//7. stoHash1: appended _id_total's Sha256Hex
-			String stoHash1 = sha256(_id_total);
+			// 5. idtoSHA256: sha256Hex of id
+			String uDatetoSHA256 = sha256(uDate);
+			// 6. totaltoSha256: sha256Hex of total
+			String uTimetoSHA512 = sha512(uTime);
+			// 7. stoHash1: appended uDateuTime's Sha256Hex
+			String stoHash1 = sha256(uDate + uTime);
 
-			//8. append id before stoHash1(appended _id_total's Sha256Hex) before total
-			String hString1 = (_id+stoHash1+_total);
-			//9. append idtoSHA256 before unQString before totaltoSHA256
-			String hString2 = (_idtoSHA256+unQString+_totaltoSHA512);
-			//10. sha256hex of hstring1: appended id before stoHash1(appended _id_total's Sha256Hex) before total
+			// 8. append id before stoHash1(appended uDateuTime's Sha256Hex) before total
+			String hString1 = (uDate + stoHash1 + uTime);
+			// 9. append idtoSHA256 before unQString before totaltoSHA256
+			String hString2 = (uDatetoSHA256 + unQString + uTimetoSHA512);
+			// 10. sha256hex of hstring1: appended id before stoHash1(appended uDateuTime's
+			// Sha256Hex) before total
 			String hS1toSHA256 = sha256(hString1);
-			//11. sha256 of hstring2: appended idtoSHA256 before unQString before totaltoSHA256
+			// 11. sha256 of hstring2: appended idtoSHA256 before unQString before
+			// totaltoSHA256
 			String hS2toSHA512 = sha512(hString2);
-			//12. sha256hex of hString1 appended before hString2
-			String hStoSHA256 = sha256(hString1+hString2); 
+			// 12. sha256hex of hString1 appended before hString2
+			String hStoSHA256 = sha256(hString1 + hString2);
 
-			//13: 
-			String hString3 = (hS1toSHA256+hS2toSHA512+hStoSHA256);
-			//Final0: 
-			String hashFinal = org.apache.commons.codec.digest.DigestUtils.sha512Hex(hString3);
+			// 13:
+			String hString3 = (hS1toSHA256 + hS2toSHA512 + hStoSHA256);
+			// Final0:
+			String hashFinal = sha512(hString3);
 
 			System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 			System.out.println("\n~~~~Commencing HASH Verification Display\n");
-			System.out.println("\nThe Date: "+_id+"." + "\nThe Time: " + _total+".\n");
+			System.out.println("\nThe Date: " + uDate + "." + "\nThe Time: " + uTime + ".\n");
 			System.out.println("Organization: PZ.");
 
 			try (BufferedReader show = new BufferedReader(new FileReader("./src/TXIDListOne.txt"))) {
 				String _line = null;
 				if ((_line = show.readLine()) != null) {
-					String hashZ1 = (hashFinal+_line);
+					String hashZ1 = (hashFinal + _line);
 					String hashZ2 = sha512(hashZ1);
 					String hashZ3 = sha512(hashZ2);
 					String hashZf = sha256(hashZ3);
@@ -176,12 +198,11 @@ public class HashVerifier {
 
 					if (input3.equals(hashZFinal)) {
 						System.out.println("\nThe HASH is correct.");
-						System.out.println("\nThe Hash for that Date and Time: "+hashZFinal+".");
-					}
-					else {
+						System.out.println("\nThe Hash for that Date and Time: " + hashZFinal + ".");
+					} else {
 						System.out.println("\nThe HASH is incorrect! Make sure you entered correctly!");
-						//remove next line for production
-						System.out.println("\nThe Hash for that Date and Time: "+hashZFinal+".");
+						// remove next line for production
+						System.out.println("\nThe Hash for that Date and Time: " + hashZFinal + ".");
 					}
 
 					// determine current screen size
@@ -192,38 +213,32 @@ public class HashVerifier {
 					// Screen Capture section
 					System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 					System.out.println("~~~~Screen Capture\n");
-					Date date = new Date();
-					String dMonth = String.format("%tb", date);
-					String dDay = String.format("%td", date);
-					String dYear = String.format("%tY", date);
-					String dHour = String.format("%tH", date);
-					String dMinute = String.format("%tM", date);
-					String dSecond = String.format("%tS", date);
-					String outImage = ("./out/ss/["+_id+"_"+_total+"] "+hashZFinal+".gif");
-					String outImageNew = ("./out/ss/checked/["+dMonth+" "+dDay+" "+dYear+" "+dHour+"_"+dMinute+"_"+dSecond+"] "+hashZFinal+"_checked.gif");
+					String outImage = ("./out/ss/[" + uDate + "_" + uTime + "] " + hashZFinal + ".gif");
+					String outImageNew = ("./out/ss/checked/[" + dMonth + " " + dDay + " " + dYear + " " + dHour + "_"
+							+ dMinute + "_" + dSecond + "] " + hashZFinal + "_checked.gif");
 					File f = new File(outImage);
-					File fNew = new File(outImageNew);					
+					File fNew = new File(outImageNew);
 					try {
 						Robot robot;
 						robot = new Robot();
 						BufferedImage image = robot.createScreenCapture(screenRect);
-						if(f.exists() && !f.isDirectory() && fNew.exists() && !fNew.isDirectory()) {
+						if (f.exists() && !f.isDirectory() && fNew.exists() && !fNew.isDirectory()) {
 							System.out.println("\nThe image exists in both folders! No screenshots taken!");
-						}
-						else if (f.exists() && !f.isDirectory()) {
-							System.out.println("\nThe image exists, now taking a screenshot!");
+						} else if (f.exists() && !f.isDirectory()) {
+							System.out.println("\nThe image exists, now taking a checked screenshot!");
 							// save captured image to GIF file
 							ImageIO.write(image, "gif", fNew);
-						}
-						else {
+							// give feedback
+							System.out.println("Saved screen shot (" + image.getWidth() + " x " + image.getHeight()
+							+ ") to file: " + fNew + ".");
+						} else {
 							// save captured image to GIF file
 							ImageIO.write(image, "gif", f);
 							// give feedback
-							System.out.println("Saved screen shot (" + image.getWidth() +
-									" x " + image.getHeight() + ") to file: "+outImage+".");
+							System.out.println("Saved screen shot (" + image.getWidth() + " x " + image.getHeight()
+							+ ") to file: " + f + ".");
 						}
-					}
-					catch (AWTException e1) {
+					} catch (AWTException e1) {
 						throw new RuntimeException("Error! File not found! Make sure the folder exists!");
 					}
 					System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
