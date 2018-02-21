@@ -1,3 +1,4 @@
+
 /*
  * Basic program.
  *--Verify the Hash:
@@ -40,40 +41,65 @@ public class HashVerifier {
 	}
 
 	final int Salt() throws NoSuchAlgorithmException {
+		// Create Salt using SecureRandom SHA1PRNG
 		SecureRandom random = SecureRandom.getInstance("SHA1PRNG");
 		salt = random.nextInt(9000000) + 1000000;
 		return salt;
 	}
 
 	protected static String sha256(String args) {
+		// Hash using SHA256
 		String hash = org.apache.commons.codec.digest.DigestUtils.sha256Hex(args);
 		return hash;
 	}
 
 	protected static String sha512(String args) {
+		// Hash using SHA512
 		String hash = org.apache.commons.codec.digest.DigestUtils.sha512Hex(args);
 		return hash;
+	}
+
+	private static Object dated() {
+		// Instantiate a Date object
+		Date date = new Date();
+		return date;
+	}
+
+	private static String dates() {
+		// Create variable for current date
+		String dDate = String.format("%tm%<td%<tY", HashVerifier.dated());
+		return dDate;
+	}
+
+	private static String times() {
+		// Create variable for instanced time
+		String dTime = String.format("%tH%<tM%<tS", HashVerifier.dated());
+		return dTime;
+	}
+
+	private static FileReader fR() throws FileNotFoundException {
+		// Load Master HashKey from file
+		return new FileReader("./src/TXIDListOne.txt");
+	}
+
+	private static Rectangle Capture() throws AWTException {
+		// Determine current screen size
+		Toolkit toolkit = Toolkit.getDefaultToolkit();
+		Dimension screenSize = toolkit.getScreenSize();
+		Rectangle screenRect = new Rectangle(screenSize);
+		return screenRect;
 	}
 
 	private static Scanner scanner = new Scanner(System.in);
 
 	public static void main(String[] args) throws IOException, NoSuchAlgorithmException {
 
-		System.out.println("~~~~This Program Allows You to Verify the HASH.");
-		System.out.println("~~~~Enter The Date and The Time below.");
+		System.out.println("~~~~This Program Generates & Verifies the HASH.");
+		System.out.println("~~~~Enter The Date and The Time below if not Auto Generate.");
 		System.out.println("~~~~Example Date: mmddyyyy like 02062018 for 02.06.2018");
 		System.out.println("~~~~Example Time: hhmmss like 120101 for 12:01:01 PM");
-		// Instantiate a Date object
-		// Create variables for current date and time
-		Date date = new Date();
-		String dMonth = String.format("%tm", date);
-		String dDay = String.format("%td", date);
-		String dYear = String.format("%tY", date);
-		String dHour = String.format("%tH", date);
-		String dMinute = String.format("%tM", date);
-		String dSecond = String.format("%tS", date);
 		// display date and time using toString()
-		System.out.println("\nCurrent Date and Time: " + date.toString());
+		System.out.println("\nCurrent Date and Time: " + dated().toString());
 		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 
 		boolean dicer;
@@ -106,7 +132,7 @@ public class HashVerifier {
 
 		HashMap<Integer, String> TXIDList = new HashMap<Integer, String>();
 
-		BufferedReader TXID = new BufferedReader(new FileReader("./src/TXIDListOne.txt"));
+		BufferedReader TXID = new BufferedReader(fR());
 		String line = ":";
 
 		int i = 1; // start from i = 1 instead of i = 0
@@ -119,18 +145,12 @@ public class HashVerifier {
 		if (TXIDList.size() != 1) {
 			System.out.println("\n" + "There can't be: " + TXIDList.size() + " TXID!" + "\n");
 		} else if (TXIDList.size() == 1) {
-			// 1. String uDatetoString = uDate;
-			// String uDate = input1;
-			// 2. String uTimetoString = uTime;
-			// String uTime = input2;
-			// 3. append id before total
-			// String uDateuTime = (uDate + uTime);
-			// 3abc: for randomization implementations
 
 			String uDate = null;
 			String uTime = null;
 			String uDT = null;
 			String unQ = null;
+
 			// if dicer is true, use salt method for Random Hash Generation
 			// if dicer is false, use append method for Fixed Hash Generation
 			if (dicer != false) {
@@ -139,8 +159,8 @@ public class HashVerifier {
 				int dSalt = mySalt.Salt();
 
 				// 3b. append id before salt before total
-				uDate = (dMonth + dDay + dYear);
-				uTime = (dHour + dMinute + dSecond);
+				uDate = (dates());
+				uTime = (times());
 				uDT = (uDate + uTime);
 				unQ = (uDate + String.valueOf(dSalt) + uTime);
 				System.out.println("\nSalt: " + dSalt + ".");
@@ -149,7 +169,6 @@ public class HashVerifier {
 				uDate = input1;
 				uTime = input2;
 				uDT = (uDate + uTime);
-
 				// 3c. append id before uDateuTime before total
 				unQ = (uDate + uDT + uTime);
 				System.out.println("\nUnique String: " + unQ + ".\n");
@@ -187,7 +206,7 @@ public class HashVerifier {
 			System.out.println("\nThe Date: " + uDate + "." + "\nThe Time: " + uTime + ".\n");
 			System.out.println("Organization: PZ.");
 
-			try (BufferedReader show = new BufferedReader(new FileReader("./src/TXIDListOne.txt"))) {
+			try (BufferedReader show = new BufferedReader(fR())) {
 				String _line = null;
 				if ((_line = show.readLine()) != null) {
 					String hashZ1 = (hashFinal + _line);
@@ -205,23 +224,19 @@ public class HashVerifier {
 						System.out.println("\nThe Hash for that Date and Time: " + hashZFinal + ".");
 					}
 
-					// determine current screen size
-					Toolkit toolkit = Toolkit.getDefaultToolkit();
-					Dimension screenSize = toolkit.getScreenSize();
-					Rectangle screenRect = new Rectangle(screenSize);
-
 					// Screen Capture section
 					System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 					System.out.println("~~~~Screen Capture\n");
 					String outImage = ("./out/ss/[" + uDate + "_" + uTime + "] " + hashZFinal + ".gif");
-					String outImageNew = ("./out/ss/checked/[" + dMonth + " " + dDay + " " + dYear + " " + dHour + "_"
-							+ dMinute + "_" + dSecond + "] " + hashZFinal + "_checked.gif");
+					String outImageNew = ("./out/ss/checked/[" + dates() + "_" + times() + "] " + hashZFinal
+							+ "_checked.gif");
 					File f = new File(outImage);
 					File fNew = new File(outImageNew);
 					try {
 						Robot robot;
 						robot = new Robot();
-						BufferedImage image = robot.createScreenCapture(screenRect);
+						BufferedImage image = robot.createScreenCapture(Capture());
+
 						if (f.exists() && !f.isDirectory() && fNew.exists() && !fNew.isDirectory()) {
 							System.out.println("\nThe image exists in both folders! No screenshots taken!");
 						} else if (f.exists() && !f.isDirectory()) {
@@ -230,13 +245,13 @@ public class HashVerifier {
 							ImageIO.write(image, "gif", fNew);
 							// give feedback
 							System.out.println("Saved screen shot (" + image.getWidth() + " x " + image.getHeight()
-							+ ") to file: " + fNew + ".");
+									+ ") to file: " + fNew + ".");
 						} else {
 							// save captured image to GIF file
 							ImageIO.write(image, "gif", f);
 							// give feedback
 							System.out.println("Saved screen shot (" + image.getWidth() + " x " + image.getHeight()
-							+ ") to file: " + f + ".");
+									+ ") to file: " + f + ".");
 						}
 					} catch (AWTException e1) {
 						throw new RuntimeException("Error! File not found! Make sure the folder exists!");
