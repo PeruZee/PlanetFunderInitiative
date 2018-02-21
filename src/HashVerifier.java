@@ -23,7 +23,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
-
 import javax.imageio.ImageIO;
 
 /**
@@ -31,10 +30,31 @@ import javax.imageio.ImageIO;
  *
  */
 public class HashVerifier {
-
+	
+	int salt;
+	
+	public HashVerifier() {
+		salt = 0;
+	}
+	
+	final int Salt() throws NoSuchAlgorithmException {
+	SecureRandom random = SecureRandom.getInstance("SHA1PRNG");
+	salt = random.nextInt(9000000) + 1000000;
+	return salt;
+	}
+	
+	public static String sha256(String args) {
+		String hash = org.apache.commons.codec.digest.DigestUtils.sha256Hex(args);
+		return hash;
+	}
+	public static String sha512(String args) {
+		String hash = org.apache.commons.codec.digest.DigestUtils.sha512Hex(args);
+		return hash;
+	}
+	
 	private static Scanner scanner = new Scanner( System.in );
 
-
+	
 	public static void main(String[] args) throws IOException, NoSuchAlgorithmException {
 
 		try {
@@ -57,23 +77,9 @@ public class HashVerifier {
 		System.out.println("\nEnter the Date: ");
 		String input1 = String.valueOf(scanner.nextLine());
 
-		try {
-			TimeUnit.SECONDS.sleep(1); //wait 1 second
-		}
-		catch (Exception e) {
-			throw new RuntimeException("Error! Something went wrong!");
-		}
-
 		// Asks USER for second input
 		System.out.println("\nEnter the Time: ");
 		String input2 = String.valueOf(scanner.nextLine());
-
-		try {
-			TimeUnit.SECONDS.sleep(1); //wait 1 second
-		}
-		catch (Exception e) {
-			throw new RuntimeException("Error! Something went wrong!");
-		}
 
 		// Asks USER for third input
 		System.out.println("\nEnter the Hash to verify: ");
@@ -83,11 +89,9 @@ public class HashVerifier {
 
 		BufferedReader TXID = new BufferedReader( new FileReader ("./src/TXIDListOne.txt"));
 		String line = ":";
-
-		int i = 1; //start from i = 1 instead of i = 0 otherwise output starts at 0 is:... instead of 1 is:...
+		int i = 1; //start from i = 1 
 
 		while ((line = TXID.readLine()) != null) {
-
 			TXIDList.put(i, line);
 			i++;
 		}
@@ -97,8 +101,7 @@ public class HashVerifier {
 			System.out.println("\n" + "There can't be: " + TXIDList.size() + " TXID!" + "\n");
 		}
 
-		for (int k=0; k<TXIDList.size(); k++)
-		{
+		for (int k=0; k<TXIDList.size(); k++) {
 			//1. String _idtoString = _id;
 			String _id = input1;
 			//2. String _totaltoString = _total;
@@ -119,13 +122,12 @@ public class HashVerifier {
 			String unQ = null;
 			if (dicer!= false) {
 				//3a. use SecureRandom to create salt
-				int salt = 0;
-				SecureRandom random = SecureRandom.getInstance("SHA1PRNG");
-				salt = random.nextInt(9000000) + 1000000;
-
+				HashVerifier mySalt = new HashVerifier();
+				int dSalt = mySalt.Salt();
+				
 				//3b. append id before salt before total
-				unQ = (_id+String.valueOf(salt)+_total);
-				System.out.println("\nSalt: "+salt+".");
+				unQ = (_id+String.valueOf(dSalt)+_total);
+				System.out.println("\nSalt: "+(dSalt)+".");
 				System.out.println("Unique String: "+unQ+".\n");
 			}
 			else {
@@ -136,22 +138,22 @@ public class HashVerifier {
 			String unQString = (unQ);
 
 			//5. idtoSHA256: sha256Hex of id
-			String _idtoSHA256 = org.apache.commons.codec.digest.DigestUtils.sha256Hex(_id);
+			String _idtoSHA256 = sha256(_id);
 			//6. totaltoSha256: sha256Hex of total
-			String _totaltoSHA512 = org.apache.commons.codec.digest.DigestUtils.sha512Hex(_total);
+			String _totaltoSHA512 = sha512(_total);
 			//7. stoHash1: appended _id_total's Sha256Hex
-			String stoHash1 = org.apache.commons.codec.digest.DigestUtils.sha256Hex(_id_total);
+			String stoHash1 = sha256(_id_total);
 
 			//8. append id before stoHash1(appended _id_total's Sha256Hex) before total
 			String hString1 = (_id+stoHash1+_total);
 			//9. append idtoSHA256 before unQString before totaltoSHA256
 			String hString2 = (_idtoSHA256+unQString+_totaltoSHA512);
 			//10. sha256hex of hstring1: appended id before stoHash1(appended _id_total's Sha256Hex) before total
-			String hS1toSHA256 = org.apache.commons.codec.digest.DigestUtils.sha256Hex(hString1);
+			String hS1toSHA256 = sha256(hString1);
 			//11. sha256 of hstring2: appended idtoSHA256 before unQString before totaltoSHA256
-			String hS2toSHA512 = org.apache.commons.codec.digest.DigestUtils.sha512Hex(hString2);
+			String hS2toSHA512 = sha512(hString2);
 			//12. sha256hex of hString1 appended before hString2
-			String hStoSHA256 = org.apache.commons.codec.digest.DigestUtils.sha256Hex(hString1+hString2); 
+			String hStoSHA256 = sha256(hString1+hString2); 
 
 			//13: 
 			String hString3 = (hS1toSHA256+hS2toSHA512+hStoSHA256);
@@ -167,10 +169,10 @@ public class HashVerifier {
 				String _line = null;
 				if ((_line = show.readLine()) != null) {
 					String hashZ1 = (hashFinal+_line);
-					String hashZ2 = org.apache.commons.codec.digest.DigestUtils.sha512Hex(hashZ1);
-					String hashZ3 = org.apache.commons.codec.digest.DigestUtils.sha512Hex(hashZ2);
-					String hashZf = org.apache.commons.codec.digest.DigestUtils.sha256Hex(hashZ3);
-					String hashZFinal = org.apache.commons.codec.digest.DigestUtils.sha256Hex(hashZf);
+					String hashZ2 = sha512(hashZ1);
+					String hashZ3 = sha512(hashZ2);
+					String hashZf = sha256(hashZ3);
+					String hashZFinal = sha256(hashZf);
 
 					if (input3.equals(hashZFinal)) {
 						System.out.println("\nThe HASH is correct.");
